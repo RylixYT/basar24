@@ -100,12 +100,10 @@ export default {
         this.data = {
           name: user.name,
           _token: this.csrf,
+          _method: "put",
         };
-        axios({
-          method: "put",
-          url: "api/user/" + user.id + "?api_token=Backend",
-          data: this.data,
-        })
+        axios
+          .post("api/user/" + user.id + "?api_token=Backend", this.data)
           .then((res) => {
             if (this.user.id == user.id) {
               location.reload();
@@ -117,10 +115,11 @@ export default {
       }, 1500);
     },
     deleteNutzer(id) {
-      axios({
-        method: "delete",
-        url: "api/user/" + id + "/delete?api_token=Backend",
-      })
+      axios
+        .post("api/user/" + id + "/delete?api_token=Backend", {
+          _method: "delete",
+          _token: this.csrf,
+        })
         .then((res) => {
           location.reload();
         })
