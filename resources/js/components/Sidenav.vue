@@ -5,7 +5,7 @@
     <ul class="list-unstyled">
       <router-link to="/" custom v-slot="{ isExactActive }">
         <li :class="[isExactActive && 'active']">
-          <a href="#"><i class="icon-home"></i>Dashboard</a>
+          <router-link to="/"><i class="icon-home"></i>Dashboard</router-link>
         </li>
       </router-link>
       <!-- <li>
