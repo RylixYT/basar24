@@ -1,0 +1,16 @@
+body {
+    min-height: 100vh;
+    background-color: #26282c;
+    main.center {
+        min-height: 100vh;
+    }
+}
+
+.center {
+    display: grid;
+    place-items: center;
+}
+
+.btn-primary {
+    color: #fff !important;
+}
