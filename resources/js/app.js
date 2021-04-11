@@ -17,8 +17,11 @@ const router = new VueRouter({
     linkExactActiveClass: "active"
 });
 
+//Vuex
 import Vuex from "vuex";
 Vue.use(Vuex);
+
+import store from "./data/index";
 
 //Vuetify
 import Vuetify from "../plugins/vuetify";
@@ -30,5 +33,6 @@ Vue.component("sidenav", require("./components/Sidenav.vue").default);
 const app = new Vue({
     vuetify: Vuetify,
     router,
+    store,
     el: "#app"
 });
