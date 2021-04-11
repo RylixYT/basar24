@@ -22,6 +22,27 @@ export default new Vuex.Store({
             await axios.get(url + "data" + token).then(res => {
                 state.commit("set", res.data);
             });
+        },
+        // C(R)UD Methods
+        async insert(state, payload) {
+            console.log(payload);
+            await axios.post(url + payload.route + token, payload.data, {
+                _method: "put",
+                _token: payload.token
+            });
+        },
+        async update(state, payload) {
+            console.log(payload);
+            await axios.post(
+                url + payload.route + "/" + payload.id + token,
+                payload.data
+            );
+        },
+        async delete(state, payload) {
+            await axios.post(url + payload.route + "/" + payload.id + token, {
+                _method: "delete",
+                _token: payload.token
+            });
         }
     },
     getters: {

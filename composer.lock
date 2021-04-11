@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3997ff35d35ab57e1de85670186bc7cc",
+    "content-hash": "c0295af9a1944cc8536fff30badca048",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2436,6 +2436,72 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "realsocius/api-crud-generator",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RealSocius/laravel-crud.git",
+                "reference": "7dd69bfa1f48cf4608b88cfc9658ac761d2d2b87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RealSocius/laravel-crud/zipball/7dd69bfa1f48cf4608b88cfc9658ac761d2d2b87",
+                "reference": "7dd69bfa1f48cf4608b88cfc9658ac761d2d2b87",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^7.1 || ^7.2 || ^7.3 || ^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.5 || ^6.0 || ^7.0 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RealSocius\\CrudGenerator\\CrudGeneratorServiceProvider"
+                    ],
+                    "aliases": {
+                        "CrudGenerator": "RealSocius\\CrudGenerator\\Facades\\CrudGenerator"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RealSocius\\CrudGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian",
+                    "email": "mineplayer300guy@gmail.com"
+                }
+            ],
+            "description": "A simple Laravel library that allows you to create crud operations with a single command",
+            "keywords": [
+                "laravel",
+                "laravel-5",
+                "laravel-6",
+                "laravel-7",
+                "laravel-8",
+                "laravel-api-crud-generator",
+                "laravel-crud-generator",
+                "laravel5",
+                "laravel6",
+                "laravel7",
+                "laravel8"
+            ],
+            "support": {
+                "issues": "https://github.com/RealSocius/laravel-crud/issues",
+                "source": "https://github.com/RealSocius/laravel-crud/tree/1.2.1"
+            },
+            "time": "2021-04-11T17:00:18+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

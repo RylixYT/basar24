@@ -88,6 +88,7 @@ class ComposerStaticInitd485f92823b97b587ddb4ebd2f8efd4d
         ),
         'R' => 
         array (
+            'RealSocius\\CrudGenerator\\' => 25,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -309,6 +310,10 @@ class ComposerStaticInitd485f92823b97b587ddb4ebd2f8efd4d
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'RealSocius\\CrudGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/realsocius/api-crud-generator/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -4233,6 +4238,9 @@ class ComposerStaticInitd485f92823b97b587ddb4ebd2f8efd4d
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'RealSocius\\CrudGenerator\\Commands\\CrudGenerator' => __DIR__ . '/..' . '/realsocius/api-crud-generator/src/Commands/CrudGenerator.php',
+        'RealSocius\\CrudGenerator\\CrudGeneratorClass\\CrudGeneratorService' => __DIR__ . '/..' . '/realsocius/api-crud-generator/src/CrudGeneratorClass/CrudGeneratorService.php',
+        'RealSocius\\CrudGenerator\\CrudGeneratorServiceProvider' => __DIR__ . '/..' . '/realsocius/api-crud-generator/src/CrudGeneratorServiceProvider.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',

@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'de58616cffb813136ed634bbcfa1c7ec59b06c56',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -431,12 +431,12 @@
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'de58616cffb813136ed634bbcfa1c7ec59b06c56',
     ),
     'laravel/sail' => 
     array (
@@ -817,6 +817,15 @@
       array (
       ),
       'reference' => 'cd4032040a750077205918c86049aa0f43d22947',
+    ),
+    'realsocius/api-crud-generator' => 
+    array (
+      'pretty_version' => '1.2.1',
+      'version' => '1.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7dd69bfa1f48cf4608b88cfc9658ac761d2d2b87',
     ),
     'rhumsaa/uuid' => 
     array (
