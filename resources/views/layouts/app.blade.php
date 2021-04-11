@@ -14,13 +14,10 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     @endauth
 
-    <!-- Fonts -->
-
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/logo.png">
 </head>
 
 <body>
