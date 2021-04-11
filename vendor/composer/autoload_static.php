@@ -88,7 +88,6 @@ class ComposerStaticInitd485f92823b97b587ddb4ebd2f8efd4d
         ),
         'R' => 
         array (
-            'RealSocius\\CrudGenerator\\' => 25,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -311,10 +310,6 @@ class ComposerStaticInitd485f92823b97b587ddb4ebd2f8efd4d
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'RealSocius\\CrudGenerator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/realsocius/crud-generator/packages/realsocius/crud-generator/src',
-        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -511,7 +506,6 @@ class ComposerStaticInitd485f92823b97b587ddb4ebd2f8efd4d
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-            1 => __DIR__ . '/..' . '/realsocius/crud-generator/app',
         ),
     );
 

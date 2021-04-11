@@ -842,15 +842,6 @@ private static $installed = array (
       ),
       'reference' => 'cd4032040a750077205918c86049aa0f43d22947',
     ),
-    'realsocius/crud-generator' => 
-    array (
-      'pretty_version' => '1.0.0',
-      'version' => '1.0.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '7bc4d56b4fbdec9e57eb8f41a68bbdbe84d30856',
-    ),
     'rhumsaa/uuid' => 
     array (
       'replaced' => 

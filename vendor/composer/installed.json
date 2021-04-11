@@ -4089,53 +4089,6 @@
             "install-path": "../ramsey/uuid"
         },
         {
-            "name": "realsocius/crud-generator",
-            "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RealSocius/crud-generator.git",
-                "reference": "7bc4d56b4fbdec9e57eb8f41a68bbdbe84d30856"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RealSocius/crud-generator/zipball/7bc4d56b4fbdec9e57eb8f41a68bbdbe84d30856",
-                "reference": "7bc4d56b4fbdec9e57eb8f41a68bbdbe84d30856",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0 || ^7.1 || ^7.2 || ^7.3 || ^7.4 || ^8.0"
-            },
-            "require-dev": {
-                "laravel/framework": "8.x-dev"
-            },
-            "time": "2021-03-07T10:58:45+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "App\\": "app/",
-                    "RealSocius\\CrudGenerator\\": "packages/realsocius/crud-generator/src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "RealSocius",
-                    "email": "mineplayer300guy@gmail.com"
-                }
-            ],
-            "description": "Simple Laravel library based on salmanzafar/laravel-crud-generator to generade a laravel crud-structure",
-            "support": {
-                "issues": "https://github.com/RealSocius/crud-generator/issues",
-                "source": "https://github.com/RealSocius/crud-generator/tree/1.0.0"
-            },
-            "install-path": "../realsocius/crud-generator"
-        },
-        {
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
             "version_normalized": "1.0.1.0",
