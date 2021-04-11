@@ -66,7 +66,7 @@
                       <button
                         v-if="nutzer.email != 'Sebastian_Schindler@statev.de'"
                         class="btn btn-danger"
-                        v-on:click="deleteNutzer(arbeiter.id)"
+                        v-on:click="deleteNutzer(nutzer.id)"
                       >
                         Delete
                       </button>
