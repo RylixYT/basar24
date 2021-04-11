@@ -94,14 +94,52 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
   mounted() {
-    this.set();
+    this.setDatas();
   },
   methods: {
-    ...mapActions(["set"]),
+    ...mapActions(["setDatas", "insert", "update", "delete"]),
+    insertData() {
+      this.insert({
+        route: "data",
+        token: this.csrf,
+        data: {
+          name: this.name,
+          telefon: this.telefon,
+          kanzlei: this.kanzlei,
+        },
+      }).then(() => {
+        this.name = "";
+        this.telefon = "";
+        this.kanzlei = "";
+        this.setDatas();
+      });
+    },
+    updateData(data) {
+      this.update({
+        route: "data",
+        id: data.id,
+        data: {
+          _method: "put",
+          _token: this.csrf,
+          name: data.name,
+          telefon: data.telefon,
+          kanzlei: data.kanzlei,
+        },
+      });
+    },
+    deleteData(id) {
+      this.delete({
+        route: "data",
+        token: this.csrf,
+        id: id,
+      }).then(() => {
+        this.setDatas();
+      });
+    },
   },
   computed: {
     ...mapGetters({
-      data: "get",
+      data: "getDatas",
     }),
   },
 };
