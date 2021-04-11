@@ -4,8 +4,7 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-// const url = "https://web-tower.com/api/";
-const url = "http://localhost:8000/api/";
+const url = "api/";
 const token = "?api_token=Backend";
 
 export default new Vuex.Store({
