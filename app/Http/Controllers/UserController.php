@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return User::with("rights")->get();
     }
 
     /**
@@ -48,7 +48,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::findOrFail($id)->update($request->all());
+        User::findOrFail($id)->update($request->except(["api_token"]));
+        return response("User " . $id . " updated", 200);
     }
 
     /**
@@ -59,8 +60,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if ($id != 1) {
+        if ($id > 2) {
             User::findOrFail($id)->delete();
         }
+        return response("User Number " . $id . " deleted", 200);
     }
 }

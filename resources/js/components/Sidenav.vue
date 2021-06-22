@@ -1,5 +1,5 @@
 <template>
-  <nav id="sidebar">
+  <nav id="sidebar" class="shrinked">
     <!-- Sidebar Navidation Menus-->
     <span class="heading mt-3">Menü</span>
     <ul class="list-unstyled">

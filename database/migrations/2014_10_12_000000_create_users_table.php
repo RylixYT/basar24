@@ -18,10 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('nextHash');
+            $table->string('nextHash')->nullable();
             $table->rememberToken();
             $table->string('api_token', 80)
                 ->unique();
+            $table->boolean("isAdmin")->default(false);
             $table->timestamps();
         });
     }

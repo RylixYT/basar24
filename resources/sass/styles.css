@@ -1,0 +1,19 @@
+body {
+  min-height: 100vh;
+  background-color: #26282c;
+}
+
+body main.center {
+  min-height: 100vh;
+}
+
+.center {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.btn-primary {
+  color: #fff !important;
+}
+/*# sourceMappingURL=styles.css.map */

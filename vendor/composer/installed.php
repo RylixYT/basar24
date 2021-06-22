@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'de58616cffb813136ed634bbcfa1c7ec59b06c56',
+    'reference' => 'dc78cea511edba1c0e8e4addb967cb02445d80fd',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -436,7 +436,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'de58616cffb813136ed634bbcfa1c7ec59b06c56',
+      'reference' => 'dc78cea511edba1c0e8e4addb967cb02445d80fd',
     ),
     'laravel/sail' => 
     array (

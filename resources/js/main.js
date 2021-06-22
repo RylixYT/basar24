@@ -1,6 +1,8 @@
 require("./bootstrap");
 require("./front");
 
+import App from "./App.vue";
+
 window.Vue = require("vue").default;
 
 //Import View Router
@@ -21,18 +23,15 @@ const router = new VueRouter({
 import Vuex from "vuex";
 Vue.use(Vuex);
 
-import store from "./data/index";
+import store from "./data/store";
 
 //Vuetify
 import Vuetify from "../plugins/vuetify";
-
-//Nav Components
-Vue.component("topnav", require("./components/Topnav.vue").default);
-Vue.component("sidenav", require("./components/Sidenav.vue").default);
+import Vue from "vue";
 
 const app = new Vue({
     vuetify: Vuetify,
     router,
     store,
-    el: "#app"
-});
+    render: h => h(App)
+}).$mount("#app");

@@ -9,10 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @auth
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    @endauth
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -22,21 +18,24 @@
 
 <body>
     @auth
-        <div id="app">
-            <topnav></topnav>
-            <div class="d-flex align-items-stretch">
-                <sidenav></sidenav>
-                <div class="page-content">
-                    <router-view :users="{{ User::all() }}" :user="{{ Auth::user() }}"></router-view>
-                </div>
-            </div>
-        </div>
+
+        <div id="app"></div>
+        <!-- Scripts -->
+        <script>
+            document.token =
+                @php
+                echo '"' . csrf_token() . '"';
+                @endphp;
+            document.user = @json(Auth::user());
+
+        </script>
+        <script src="{{ mix('js/app.js') }}"></script>
     @else
         <main class="center">
             @yield('content')
         </main>
     @endauth
-
 </body>
+
 
 </html>
