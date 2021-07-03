@@ -10,7 +10,9 @@ const api_token = document.user.api_token;
 
 export default new Vuex.Store({
     state: {
-        users: {}
+        users: [],
+        customers: [],
+        cars: []
     },
     mutations: {
         set(state, payload) {
@@ -49,6 +51,8 @@ export default new Vuex.Store({
         }
     },
     getters: {
-        getUsers: state => state.users
+        getUsers: state => state.users,
+        getCustomers: state => state.customers,
+        getCars: state => state.cars
     }
 });

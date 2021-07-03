@@ -119,7 +119,7 @@ export default {
             });
         },
         deleteUser(id) {
-            this.update({
+            this.delete({
                 id: id,
                 route: "users"
             });
