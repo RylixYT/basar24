@@ -19,10 +19,15 @@ class CreateRentsTable extends Migration
             $table->foreignId('owner_id')->constrained()->references('id')->on('customers')->onDelete('cascade');
             $table->string("name");
             $table->string("typ");
-            $table->text("vertrag");
+            $table->string("vertrag");
+            $table->integer("mietdauer");
             $table->integer("vertragsnummer");
-            $table->float("rabatt");
-            $table->float("kaution");
+            $table->integer("rabatt");
+            $table->integer("kaution");
+            $table->string("tagespreis");
+            $table->string("wochenpreis");
+            $table->string("monatspreis");
+            $table->string("berechnungsindex");
             $table->date("start");
             $table->date("end");
             $table->timestamps();

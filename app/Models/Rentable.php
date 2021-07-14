@@ -10,6 +10,16 @@ class Rentable extends Model
 
     function car()
     {
-        return $this->hasOne(Vehicle::class, "name", "model");
+        return $this->hasOne(Vehicle::class, "model", "name");
+    }
+
+    function owner()
+    {
+        return $this->hasOne(Customer::class, "id", "owner_id");
+    }
+
+    function customer()
+    {
+        return $this->hasOne(Customer::class, "id", "customer_id");
     }
 }

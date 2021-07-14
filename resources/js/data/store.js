@@ -12,7 +12,12 @@ export default new Vuex.Store({
     state: {
         users: [],
         customers: [],
-        cars: []
+        cars: [],
+        rentables: [],
+        deposits: [],
+        discounts: [],
+        werb: [],
+        rents: []
     },
     mutations: {
         set(state, payload) {
@@ -53,6 +58,11 @@ export default new Vuex.Store({
     getters: {
         getUsers: state => state.users,
         getCustomers: state => state.customers,
-        getCars: state => state.cars
+        getCars: state => state.cars,
+        getRentables: state => state.rentables,
+        getDeposits: state => state.deposits,
+        getDiscounts: state => state.discounts,
+        getAds: state => state.werb,
+        getRents: state => state.rents
     }
 });

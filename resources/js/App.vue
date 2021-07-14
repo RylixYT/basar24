@@ -4,14 +4,15 @@
         <div class="d-flex align-items-stretch">
             <sidenav></sidenav>
             <div class="page-content active">
-                <router-view></router-view>
+                <v-app class="v-app">
+                    <router-view></router-view>
+                </v-app>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 import Topnav from "./components/Topnav";
 import Sidenav from "./components/Sidenav";
 
@@ -23,4 +24,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.v-app,
+.v-application {
+    background: transparent !important;
+}
+</style>

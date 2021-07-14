@@ -10,13 +10,6 @@
                     </router-link>
                 </li>
             </router-link>
-            <router-link to="/cars" custom v-slot="{ isExactActive }">
-                <li :class="[isExactActive && 'active']">
-                    <router-link to="/cars">
-                        <i class="fa fa-car"></i>Fahrzeuge
-                    </router-link>
-                </li>
-            </router-link>
             <router-link to="/customers" custom v-slot="{ isExactActive }">
                 <li :class="[isExactActive && 'active']">
                     <router-link to="/customers">
@@ -24,6 +17,87 @@
                     </router-link>
                 </li>
             </router-link>
+            <li>
+                <a href="#cars" aria-expanded="false" data-toggle="collapse">
+                    <i class="fa fa-car"></i>Fahrzeuge
+                </a>
+                <ul id="cars" class="collapse list-unstyled">
+                    <router-link to="/cars" custom v-slot="{ isExactActive }">
+                        <li :class="[isExactActive && 'active']">
+                            <router-link to="/cars">
+                                <i class="fa fa-car"></i>Fahrzeugtypen
+                            </router-link>
+                        </li>
+                    </router-link>
+                    <router-link
+                        to="/cars/rentable"
+                        custom
+                        v-slot="{ isExactActive }"
+                    >
+                        <li :class="[isExactActive && 'active']">
+                            <router-link to="/cars/rentable">
+                                <i class="fa fa-car"></i>Mietfahrzeuge
+                            </router-link>
+                        </li>
+                    </router-link>
+                    <router-link
+                        to="/discounts"
+                        custom
+                        v-slot="{ isExactActive }"
+                    >
+                        <li :class="[isExactActive && 'active']">
+                            <router-link to="/discounts">
+                                <i class="fa fa-percent"></i>Rabatte
+                            </router-link>
+                        </li>
+                    </router-link>
+                </ul>
+            </li>
+            <li>
+                <a href="#verleih" aria-expanded="false" data-toggle="collapse">
+                    <i class="fa fa-handshake-o"></i>Verleih
+                </a>
+                <ul id="verleih" class="collapse list-unstyled">
+                    <router-link
+                        to="/verleihe/offen"
+                        custom
+                        v-slot="{ isExactActive }"
+                    >
+                        <li :class="[isExactActive && 'active']">
+                            <router-link to="/verleihe/offen">
+                                <i class="fa fa-hourglass"></i>Offene Verleihe
+                            </router-link>
+                        </li>
+                    </router-link>
+                    <router-link
+                        to="/verleihe/verlauf"
+                        custom
+                        v-slot="{ isExactActive }"
+                    >
+                        <li :class="[isExactActive && 'active']">
+                            <router-link to="/verleihe/verlauf">
+                                <i class="fa fa-list-alt"></i>Verleihverlauf
+                            </router-link>
+                        </li>
+                    </router-link>
+                </ul>
+            </li>
+
+            <router-link to="/deposits" custom v-slot="{ isExactActive }">
+                <li :class="[isExactActive && 'active']">
+                    <router-link to="/deposits">
+                        <i class="fa fa-money"></i>Kautionen
+                    </router-link>
+                </li>
+            </router-link>
+            <router-link to="/ads" custom v-slot="{ isExactActive }">
+                <li :class="[isExactActive && 'active']">
+                    <router-link to="/ads">
+                        <i class="fa fa-dollar"></i>Werbung
+                    </router-link>
+                </li>
+            </router-link>
+
             <!-- <li>
         <a
           href="#exampledropdownDropdown"

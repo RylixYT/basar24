@@ -9,23 +9,7 @@ class DiscountsController extends Controller
 {
     public function index()
     {
-        $discounts = Discount::latest()->get();
-
-        return response($discounts, 200);
-    }
-
-    public function store(DiscountRequest $request)
-    {
-        $discount = Discount::create($request->all());
-
-        return response($discount, 201);
-
-    }
-
-    public function show($id)
-    {
-        $discount = Discount::findOrFail($id);
-
+        $discount = Discount::firstOrCreate(["id" => 1], ["id" => 1]);
         return response($discount, 200);
     }
 
@@ -35,12 +19,5 @@ class DiscountsController extends Controller
         $discount->update($request->all());
 
         return response($discount, 200);
-    }
-
-    public function destroy($id)
-    {
-        Discount::destroy($id);
-
-        return response(null, 204);
     }
 }

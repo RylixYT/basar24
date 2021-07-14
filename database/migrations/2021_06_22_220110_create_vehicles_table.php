@@ -20,13 +20,15 @@ class CreateVehiclesTable extends Migration
             $table->string("antrieb");
             $table->string("klasse");
             $table->string("kraftstoff");
+            $table->string("bild");
             $table->integer("ps");
             $table->integer("sitze");
             $table->integer("kofferraum");
             $table->integer("max");
+            $table->float("neupreis");
             $table->float("verbrauch");
             $table->float("beschleunigung");
-            $table->float("rabatt")->default(0);
+            $table->float("rabatt")->default(1);
             $table->timestamps();
         });
     }

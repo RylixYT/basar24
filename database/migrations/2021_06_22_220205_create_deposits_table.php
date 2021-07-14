@@ -16,10 +16,11 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->string("typ");
-            $table->string("fertig");
             $table->text("bemerkung");
-            $table->integer("vbanhin");
-            $table->integer("vbanzurueck");
+            $table->boolean("fertig")->default(false);
+            $table->integer("vban_empfaenger");
+            $table->integer("vban_sender");
+            $table->float("wert");
             $table->timestamps();
         });
     }

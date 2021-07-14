@@ -9,7 +9,7 @@ class RentablesController extends Controller
 {
     public function index()
     {
-        $rentables = Rentable::latest()->get();
+        $rentables = Rentable::with(["owner", "customer", "car"])->latest()->get();
 
         return response($rentables, 200);
     }
@@ -19,7 +19,6 @@ class RentablesController extends Controller
         $rentable = Rentable::create($request->all());
 
         return response($rentable, 201);
-
     }
 
     public function show($id)
