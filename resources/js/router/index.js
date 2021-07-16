@@ -5,7 +5,6 @@ import Mietfahrzeuge from "../views/Mietfahrzeuge";
 import Kaution from "../views/Kaution";
 import Rabatt from "../views/Rabatt";
 import Verleih from "../views/Verleih";
-import Verleihverlauf from "../views/Verleihverlauf";
 import Werbung from "../views/Werbung";
 import Nutzerverwaltung from "../views/Nutzerverwaltung";
 
@@ -43,11 +42,7 @@ export const routes = [
         component: Werbung
     },
     {
-        path: "/verleihe/offen",
+        path: "/verleih",
         component: Verleih
-    },
-    {
-        path: "/verleihe/verlauf",
-        component: Verleihverlauf
     }
 ];

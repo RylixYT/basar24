@@ -53,35 +53,13 @@
                     </router-link>
                 </ul>
             </li>
-            <li>
-                <a href="#verleih" aria-expanded="false" data-toggle="collapse">
-                    <i class="fa fa-handshake-o"></i>Verleih
-                </a>
-                <ul id="verleih" class="collapse list-unstyled">
-                    <router-link
-                        to="/verleihe/offen"
-                        custom
-                        v-slot="{ isExactActive }"
-                    >
-                        <li :class="[isExactActive && 'active']">
-                            <router-link to="/verleihe/offen">
-                                <i class="fa fa-hourglass"></i>Offene Verleihe
-                            </router-link>
-                        </li>
+            <router-link to="/verleih" custom v-slot="{ isExactActive }">
+                <li :class="[isExactActive && 'active']">
+                    <router-link to="/verleih">
+                        <i class="icon-contract"></i>Verleihe
                     </router-link>
-                    <router-link
-                        to="/verleihe/verlauf"
-                        custom
-                        v-slot="{ isExactActive }"
-                    >
-                        <li :class="[isExactActive && 'active']">
-                            <router-link to="/verleihe/verlauf">
-                                <i class="fa fa-list-alt"></i>Verleihverlauf
-                            </router-link>
-                        </li>
-                    </router-link>
-                </ul>
-            </li>
+                </li>
+            </router-link>
 
             <router-link to="/deposits" custom v-slot="{ isExactActive }">
                 <li :class="[isExactActive && 'active']">

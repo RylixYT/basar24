@@ -99,7 +99,7 @@
                             <div class="block-body">
                                 <span
                                     class="d-block"
-                                    v-if="typeof activeCar != 'object'"
+                                    v-if="!isObject(activeCar)"
                                 >
                                     Bitte Fahrzeug auswählen ...
                                 </span>
@@ -176,7 +176,7 @@
                             <div class="block-body">
                                 <span
                                     class="d-block"
-                                    v-if="typeof activeMieter != 'object'"
+                                    v-if="!isObject(activeMieter)"
                                 >
                                     Bitte Mieter auswählen ...
                                 </span>
@@ -671,7 +671,9 @@ export default {
                     },
                     route: "rents"
                 }).then(() => {
-                    this.$destroy();
+                    this.step = 1;
+                    this.set("rentables");
+                    this.set("rents");
                 });
             }
         },
@@ -681,6 +683,12 @@ export default {
             } else {
                 this.step = 3;
             }
+        },
+        isObject(value) {
+            if (typeof value == "object") {
+                return true;
+            }
+            return false;
         }
     },
     computed: {
