@@ -37,16 +37,6 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">
-                                            Fahrzeugbild
-                                        </label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            v-model="fahrzeug.bild"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
                                             Fahrzeugart
                                         </label>
                                         <select
@@ -62,6 +52,9 @@
                                             </option>
                                             <option value="Transporter">
                                                 Transporter
+                                            </option>
+                                            <option value="Boot">
+                                                Boot
                                             </option>
                                         </select>
                                     </div>
@@ -221,7 +214,6 @@
                             <thead>
                                 <tr>
                                     <th>Model</th>
-                                    <th>Bild</th>
                                     <th>Antrieb</th>
                                     <th>Fahrzeugart</th>
                                     <th>Klasse</th>
@@ -242,13 +234,6 @@
                                         <input
                                             type="text"
                                             v-model="car.model"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.bild"
                                             @input="updateData(car)"
                                         />
                                     </td>
@@ -284,6 +269,7 @@
                                             <option value="Transporter">
                                                 Transporter
                                             </option>
+                                            <option value="Boot">Boot</option>
                                         </select>
                                     </td>
                                     <td>

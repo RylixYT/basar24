@@ -20,7 +20,6 @@ class CreateVehiclesTable extends Migration
             $table->string("antrieb");
             $table->string("klasse");
             $table->string("kraftstoff");
-            $table->string("bild");
             $table->integer("ps");
             $table->integer("sitze");
             $table->integer("kofferraum");

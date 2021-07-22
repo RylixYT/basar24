@@ -632,7 +632,7 @@ export default {
             var aux = document.createElement("input");
             aux.setAttribute(
                 "value",
-                document.getElementById("vertrag").innerHTML
+                document.getElementById("vertrag").outerText
             );
             document.body.appendChild(aux);
             aux.select();
@@ -641,11 +641,26 @@ export default {
         },
         vermieten() {
             if (this.step == 4 && !this.activeCar.customer) {
+                // Add Driver to Mietfahrzeug
                 this.update({
                     id: this.activeCar.id,
                     data: { customer_id: this.activeMieter.id },
                     route: "rentables"
                 });
+
+                // Add Kaution
+                this.insert({
+                    data: {
+                        typ: "hin", //Hin zu OOT | Zurueck zu kaution
+                        bemerkung: "OOT-" + this.rents.length + 1,
+                        vban_empfaenger: 993990,
+                        vban_sender: this.activeMieter.vban,
+                        wert: this.kaution
+                    },
+                    route: "deposits"
+                });
+
+                // Add Rent
                 this.insert({
                     data: {
                         name: this.model,

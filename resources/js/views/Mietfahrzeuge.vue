@@ -55,6 +55,16 @@
                                         />
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-control-label">
+                                            Fahrzeugbild
+                                        </label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            v-model="rentable.bild"
+                                        />
+                                    </div>
+                                    <div class="form-group">
                                         <select
                                             class="form-control"
                                             v-model="rentable.owner_id"
@@ -102,6 +112,7 @@
                                     <th>#</th>
                                     <th class="w-15">Name</th>
                                     <th class="w-15">Kennzeichen</th>
+                                    <th>Bild</th>
                                     <th class="w-15">Eigentümer</th>
                                     <th>Mieter</th>
                                     <th></th>
@@ -122,16 +133,34 @@
                                         }}
                                     </th>
                                     <td>
+                                        <select
+                                            class="form-control"
+                                            v-model="car.name"
+                                            @input="updateData(car)"
+                                        >
+                                            <option disabled :value="null">
+                                                Bitte Fahzreugmodell auswählen
+                                            </option>
+                                            <option
+                                                v-for="car of cars"
+                                                :key="car.id"
+                                                :value="car.model"
+                                            >
+                                                {{ car.model }}
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
                                         <input
                                             type="text"
-                                            v-model="car.name"
+                                            v-model="car.kennzeichen"
                                             @input="updateData(car)"
                                         />
                                     </td>
                                     <td>
                                         <input
                                             type="text"
-                                            v-model="car.kennzeichen"
+                                            v-model="car.bild"
                                             @input="updateData(car)"
                                         />
                                     </td>
@@ -164,14 +193,6 @@
                                     </td>
                                     <td>
                                         <button
-                                            v-if="car.customer_id"
-                                            class="btn btn-warning"
-                                            @click="mieterEntfernen(car.id)"
-                                        >
-                                            <i class="fa fa-fast-backward"></i>
-                                            Mieter enfternen
-                                        </button>
-                                        <button
                                             class="btn btn-danger"
                                             @click="deleteData(car.id)"
                                         >
@@ -196,6 +217,7 @@ export default {
             rentable: {
                 name: "",
                 kennzeichen: "",
+                bild: "",
                 owner_id: null
             }
         };
@@ -230,15 +252,6 @@ export default {
         deleteData(id) {
             this.delete({
                 id: id,
-                route: "rentables"
-            }).then(() => {
-                this.set("rentables");
-            });
-        },
-        mieterEntfernen(id) {
-            this.update({
-                id: id,
-                data: { customer_id: null },
                 route: "rentables"
             }).then(() => {
                 this.set("rentables");

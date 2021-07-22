@@ -70,7 +70,10 @@
                                         </td>
                                         <td>{{ nutzer.email }}</td>
                                         <td>
-                                            <div class="i-checks">
+                                            <div
+                                                class="i-checks"
+                                                v-if="index > 1"
+                                            >
                                                 <input
                                                     id="admin"
                                                     type="checkbox"
