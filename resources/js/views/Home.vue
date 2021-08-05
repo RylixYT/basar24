@@ -602,7 +602,7 @@ export default {
                         this.model
                     ) {
                         this.activeCar = car;
-                        if (!this.activeCar.customer_id) {
+                        if (!this.activeCar.rent_id) {
                             this.step = 2;
                         }
                     }
@@ -641,13 +641,6 @@ export default {
         },
         vermieten() {
             if (this.step == 4 && !this.activeCar.customer) {
-                // Add Driver to Mietfahrzeug
-                this.update({
-                    id: this.activeCar.id,
-                    data: { customer_id: this.activeMieter.id },
-                    route: "rentables"
-                });
-
                 // Add Kaution
                 this.insert({
                     data: {
@@ -686,6 +679,12 @@ export default {
                     },
                     route: "rents"
                 }).then(() => {
+                    // Add Driver to Mietfahrzeug
+                    this.update({
+                        id: this.activeCar.id,
+                        data: { rent_id: this.rents.length + 1 },
+                        route: "rentables"
+                    });
                     this.step = 1;
                     this.set("rentables");
                     this.set("rents");

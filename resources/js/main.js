@@ -1,3 +1,4 @@
+require("jquery");
 require("./bootstrap");
 require("./front");
 
@@ -24,6 +25,9 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 import store from "./data/store";
+
+//Vue Bootstrap
+import Bootstrap from "../plugins/vue-bootstrap";
 
 //Vuetify
 import Vuetify from "../plugins/vuetify";

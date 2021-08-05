@@ -65,9 +65,19 @@
                                         }}
                                     </td>
                                     <td>{{ rent.kaution }} $</td>
-                                    <td>{{ rent.vertrag }}</td>
                                     <td>
-                                        <button class="btn btn-danger">
+                                        <button
+                                            class="btn btn-sm btn-dark mr-2"
+                                            @click="openPicture(rent.vertrag)"
+                                        >
+                                            <i class="icon icon-contract"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            class="btn btn-danger"
+                                            @click="beenden(rent.id)"
+                                        >
                                             <i class="fa fa-envelope"></i>
                                             Beenden
                                         </button>
@@ -154,7 +164,6 @@ import { mapGetters, mapActions } from "vuex";
 export default {
     mounted() {
         this.set("rents");
-        console.log(this.dayDiff("2021-07-16"));
     },
     methods: {
         ...mapActions(["set", "insert", "update"]),
@@ -178,17 +187,19 @@ export default {
                 case "TAG":
                     return (
                         rent.tagespreis * rent.mietdauer -
-                        rent.tagespreis * rent.mietdauer * rent.rabatt
+                        rent.tagespreis * rent.mietdauer * (rent.rabatt / 100)
                     );
                 case "WOCHE":
                     return (
                         (rent.wochenpreis * rent.mietdauer) / 7 -
-                        ((rent.wochenpreis * rent.mietdauer) / 7) * rent.rabatt
+                        ((rent.wochenpreis * rent.mietdauer) / 7) *
+                            (rent.rabatt / 100)
                     );
                 case "MONAT":
                     return (
                         (rent.monatspreis * rent.mietdauer) / 30 -
-                        ((rent.monatspreis * rent.mietdauer) / 30) * rent.rabatt
+                        ((rent.monatspreis * rent.mietdauer) / 30) *
+                            (rent.rabatt / 100)
                     );
             }
         },
@@ -202,6 +213,18 @@ export default {
                     )
                 )
                 .toDays();
+        },
+        openPicture(bild) {
+            this.$parent.$parent.openPicture(bild);
+        },
+        beenden(id) {
+            this.update({
+                id: id,
+                data: { end: date.format(new Date(), "YYYY-MM-DD") },
+                route: "rents"
+            });
+            this.set("rents");
+            this.set("rentables");
         }
     },
     computed: {

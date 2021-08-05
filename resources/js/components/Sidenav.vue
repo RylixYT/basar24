@@ -18,7 +18,14 @@
                 </li>
             </router-link>
             <li>
-                <a href="#cars" aria-expanded="false" data-toggle="collapse">
+                <a
+                    href="#cars"
+                    aria-expanded="false"
+                    data-bs-toggle="collapse"
+                    data-toggle="collapse"
+                    role="button"
+                    aria-controls="cars"
+                >
                     <i class="fa fa-car"></i>Fahrzeuge
                 </a>
                 <ul id="cars" class="collapse list-unstyled">

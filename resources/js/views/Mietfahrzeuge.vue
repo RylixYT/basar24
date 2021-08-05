@@ -65,6 +65,9 @@
                                         />
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-control-label">
+                                            Besitzer
+                                        </label>
                                         <select
                                             class="form-control"
                                             v-model="rentable.owner_id"
@@ -157,7 +160,13 @@
                                             @input="updateData(car)"
                                         />
                                     </td>
-                                    <td>
+                                    <td class="d-flex">
+                                        <button
+                                            class="btn btn-sm btn-dark mr-2"
+                                            @click="openPicture(car.bild)"
+                                        >
+                                            <i class="fa fa-image"></i>
+                                        </button>
                                         <input
                                             type="text"
                                             v-model="car.bild"
@@ -186,7 +195,7 @@
                                     </td>
                                     <td>
                                         {{
-                                            car.customer_id
+                                            car.rent_id
                                                 ? car.customer.name
                                                 : "Nicht vermietet"
                                         }}
@@ -215,7 +224,7 @@ export default {
     data() {
         return {
             rentable: {
-                name: "",
+                name: null,
                 kennzeichen: "",
                 bild: "",
                 owner_id: null
@@ -225,6 +234,7 @@ export default {
     mounted() {
         this.set("rentables");
         this.set("customers");
+        this.set("cars");
     },
     methods: {
         ...mapActions(["set", "insert", "update", "delete"]),
@@ -256,6 +266,9 @@ export default {
             }).then(() => {
                 this.set("rentables");
             });
+        },
+        openPicture(bild) {
+            this.$parent.$parent.openPicture(bild);
         }
     },
     computed: {

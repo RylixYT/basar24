@@ -18,8 +18,13 @@ class Rentable extends Model
         return $this->hasOne(Customer::class, "id", "owner_id");
     }
 
+    function rent()
+    {
+        return $this->hasOne(Rent::class, "id", "rent_id");
+    }
+
     function customer()
     {
-        return $this->hasOne(Customer::class, "id", "customer_id");
+        return $this->hasOneThrough(Customer::class, Rent::class, "id", "id", "rent_id", "customer_id");
     }
 }

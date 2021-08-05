@@ -18,7 +18,7 @@ class CreateRentablesTable extends Migration
             $table->string("name");
             $table->string("kennzeichen");
             $table->string("bild");
-            $table->foreignId('customer_id')->nullable()->constrained()->references('id')->on('customers')->onDelete('cascade');
+            $table->foreignId('rent_id')->nullable()->constrained()->references('id')->on('rents')->onDelete('cascade');
             $table->foreignId('owner_id')->constrained()->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });

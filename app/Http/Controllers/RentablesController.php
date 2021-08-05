@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RentableRequest;
+use App\Models\Customer;
+use App\Models\Rent;
 use App\Models\Rentable;
+use Carbon\Carbon;
 
 class RentablesController extends Controller
 {
     public function index()
     {
-        $rentables = Rentable::with(["owner", "customer", "car"])->latest()->get();
+        $this->getExpired();
+
+        $rentables = Rentable::with(["owner", "customer", "car"])->orderBy("name")->get();
 
         return response($rentables, 200);
     }
@@ -41,5 +46,15 @@ class RentablesController extends Controller
         Rentable::destroy($id);
 
         return response(null, 204);
+    }
+
+    public function getExpired()
+    {
+        $rentables = Rentable::whereRaw("rent_id <> ''")->with("rent")->get();
+        foreach ($rentables as $rentable) {
+            if (($rentable->rent->end == today()->format("Y-m-d") && now()->between(today()->addHours(20), today()->addHours(24))) || $rentable->rent->end < today()->format("Y-m-d")) {
+                Rentable::find($rentable->id)->update(["rent_id" => null]);
+            }
+        }
     }
 }

@@ -9,6 +9,14 @@
                 </v-app>
             </div>
         </div>
+        <b-modal
+            ref="vorschau"
+            class="vorschau"
+            hide-footer
+            title="Bildvorschau"
+        >
+            <img class="w-100" :src="bild" />
+        </b-modal>
     </div>
 </template>
 
@@ -20,13 +28,29 @@ export default {
     components: {
         topnav: Topnav,
         sidenav: Sidenav
+    },
+    data() {
+        return {
+            bild: ""
+        };
+    },
+    methods: {
+        openPicture(bild) {
+            this.bild = bild;
+            this.$refs["vorschau"].show();
+        }
     }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .v-app,
 .v-application {
     background: transparent !important;
+}
+
+.modal,
+.modal-open {
+    padding: 0 !important;
 }
 </style>
