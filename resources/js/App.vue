@@ -49,7 +49,7 @@ export default {
 }
 input,
 th {
-    color: #fff !important;
+    color: #979a9f !important;
 }
 
 .v-app,

@@ -9,7 +9,7 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customers = Customer::with("cars")->oldest()->get();
+        $customers = Customer::with("cars")->orderBy("id", "ASC")->get();
 
         return response($customers, 200);
     }

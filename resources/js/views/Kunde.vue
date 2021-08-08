@@ -97,7 +97,9 @@
                                             v-for="(kunde, index) of customers"
                                             :key="index"
                                         >
-                                            <th scope="row">{{ index + 1 }}</th>
+                                            <th scope="row">
+                                                OOT-{{ kunde.id }}
+                                            </th>
                                             <td>
                                                 <input
                                                     type="text"
