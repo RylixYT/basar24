@@ -12,12 +12,14 @@
                         <div class="brand-text brand-big text-uppercase">
                             <strong class="text-primary">Liveinvader</strong>
                             <strong>Backend x </strong>
-                            <strong class="text-primary">Unternehmen</strong>
+                            <strong class="text-primary"
+                                >O.O.T. - Autovermietung</strong
+                            >
                         </div>
                         <div class="brand-text brand-sm visible">
                             <strong class="text-primary">LI</strong
                             ><strong>&nbsp;x&nbsp;</strong>
-                            <strong class="text-primary">UN</strong>
+                            <strong class="text-primary">OOT</strong>
                         </div>
                     </router-link>
                     <!-- Sidebar Toggle Btn-->
