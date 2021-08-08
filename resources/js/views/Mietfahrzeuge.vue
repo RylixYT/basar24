@@ -33,7 +33,7 @@
                                             v-model="rentable.name"
                                         >
                                             <option disabled :value="null">
-                                                Bitte Fahzreugmodell auswählen
+                                                Bitte Fahrzeugmodell auswählen
                                             </option>
                                             <option
                                                 v-for="car of cars"

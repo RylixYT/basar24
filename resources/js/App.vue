@@ -48,7 +48,8 @@ export default {
     margin-bottom: 0.52vw;
 }
 input,
-th {
+th,
+td {
     color: #979a9f !important;
 }
 
