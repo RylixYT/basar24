@@ -8,149 +8,185 @@
         </div>
         <!-- Forms -->
         <section class="no-padding-top">
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Laufende Vermietungen</strong><br />
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>O.O.T-Kennung</th>
-                                    <th>Typ</th>
-                                    <th>Mietdauer</th>
-                                    <th>Rabatt</th>
-                                    <th>Tagespreis</th>
-                                    <th>Wochenpreis</th>
-                                    <th>Monatspreis</th>
-                                    <th>Index</th>
-                                    <th>von</th>
-                                    <th>bis</th>
-                                    <th>Preis</th>
-                                    <th>Mieter</th>
-                                    <th>Eigentümer</th>
-                                    <th>Kaution</th>
-                                    <th>Vertrag</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(rent, index) of offen" :key="index">
-                                    <th scope="row">OOT-{{ rent.id }}</th>
-                                    <td>{{ rent.name }}</td>
-                                    <td>{{ rent.typ }}</td>
-                                    <td>{{ rent.mietdauer }}</td>
-                                    <td>{{ rent.rabatt }}%</td>
-                                    <td>{{ format(rent.tagespreis) }}</td>
-                                    <td>{{ format(rent.wochenpreis) }}</td>
-                                    <td>{{ format(rent.monatspreis) }}</td>
-                                    <td>{{ rent.berechnungsindex }}</td>
-                                    <td>{{ formatDate(rent.start) }}</td>
-                                    <td>{{ formatDate(rent.end) }}</td>
-                                    <td>{{ format(preis(rent)) }}</td>
-                                    <td>
-                                        {{
-                                            rent.customer
-                                                ? rent.customer.name
-                                                : "Mieter gelöscht"
-                                        }}
-                                    </td>
-                                    <td>
-                                        {{
-                                            rent.owner
-                                                ? rent.owner.name
-                                                : "Vermieter gelöscht"
-                                        }}
-                                    </td>
-                                    <td>{{ rent.kaution }} $</td>
-                                    <td>
-                                        <button
-                                            class="btn btn-sm btn-dark mr-2"
-                                            @click="openPicture(rent.vertrag)"
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong>Laufende Vermietungen</strong><br />
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>O.O.T-Kennung</th>
+                                            <th>Typ</th>
+                                            <th>Mietdauer</th>
+                                            <th>Rabatt</th>
+                                            <th>Tagespreis</th>
+                                            <th>Wochenpreis</th>
+                                            <th>Monatspreis</th>
+                                            <th>Index</th>
+                                            <th>von</th>
+                                            <th>bis</th>
+                                            <th>Preis</th>
+                                            <th>Mieter</th>
+                                            <th>Eigentümer</th>
+                                            <th>Kaution</th>
+                                            <th>Vertrag</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(rent, index) of offen"
+                                            :key="index"
                                         >
-                                            <i class="icon icon-contract"></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button
-                                            class="btn btn-danger"
-                                            @click="beenden(rent.id)"
+                                            <th scope="row">
+                                                OOT-{{ rent.id }}
+                                            </th>
+                                            <td>{{ rent.name }}</td>
+                                            <td>{{ rent.typ }}</td>
+                                            <td>{{ rent.mietdauer }}</td>
+                                            <td>{{ rent.rabatt }}%</td>
+                                            <td>
+                                                {{ format(rent.tagespreis) }}
+                                            </td>
+                                            <td>
+                                                {{ format(rent.wochenpreis) }}
+                                            </td>
+                                            <td>
+                                                {{ format(rent.monatspreis) }}
+                                            </td>
+                                            <td>{{ rent.berechnungsindex }}</td>
+                                            <td>
+                                                {{ formatDate(rent.start) }}
+                                            </td>
+                                            <td>{{ formatDate(rent.end) }}</td>
+                                            <td>{{ format(preis(rent)) }}</td>
+                                            <td>
+                                                {{
+                                                    rent.customer
+                                                        ? rent.customer.name
+                                                        : "Mieter gelöscht"
+                                                }}
+                                            </td>
+                                            <td>
+                                                {{
+                                                    rent.owner
+                                                        ? rent.owner.name
+                                                        : "Vermieter gelöscht"
+                                                }}
+                                            </td>
+                                            <td>{{ rent.kaution }} $</td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-sm btn-dark mr-2"
+                                                    @click="
+                                                        openPicture(
+                                                            rent.vertrag
+                                                        )
+                                                    "
+                                                >
+                                                    <i
+                                                        class="icon icon-contract"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-danger"
+                                                    @click="beenden(rent.id)"
+                                                >
+                                                    <i
+                                                        class="fa fa-envelope"
+                                                    ></i>
+                                                    Beenden
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong>Abgeschlossene Vermietungen</strong
+                                ><br />
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>O.O.T-Kennung</th>
+                                            <th>Typ</th>
+                                            <th>Mietdauer</th>
+                                            <th>Rabatt</th>
+                                            <th>Tagespreis</th>
+                                            <th>Wochenpreis</th>
+                                            <th>Monatspreis</th>
+                                            <th>Index</th>
+                                            <th>von</th>
+                                            <th>bis</th>
+                                            <th>Preis</th>
+                                            <th>Mieter</th>
+                                            <th>Eigentümer</th>
+                                            <th>Kaution</th>
+                                            <th>Vertrag</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(rent, index) of closed"
+                                            :key="index"
                                         >
-                                            <i class="fa fa-envelope"></i>
-                                            Beenden
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Abgeschlossene Vermietungen</strong><br />
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>O.O.T-Kennung</th>
-                                    <th>Typ</th>
-                                    <th>Mietdauer</th>
-                                    <th>Rabatt</th>
-                                    <th>Tagespreis</th>
-                                    <th>Wochenpreis</th>
-                                    <th>Monatspreis</th>
-                                    <th>Index</th>
-                                    <th>von</th>
-                                    <th>bis</th>
-                                    <th>Preis</th>
-                                    <th>Mieter</th>
-                                    <th>Eigentümer</th>
-                                    <th>Kaution</th>
-                                    <th>Vertrag</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="(rent, index) of closed"
-                                    :key="index"
-                                >
-                                    <th scope="row">OOT-{{ rent.id }}</th>
-                                    <td>{{ rent.name }}</td>
-                                    <td>{{ rent.typ }}</td>
-                                    <td>{{ rent.mietdauer }}</td>
-                                    <td>{{ rent.rabatt }}%</td>
-                                    <td>{{ format(rent.tagespreis) }}</td>
-                                    <td>{{ format(rent.wochenpreis) }}</td>
-                                    <td>{{ format(rent.monatspreis) }}</td>
-                                    <td>{{ rent.berechnungsindex }}</td>
-                                    <td>{{ formatDate(rent.start) }}</td>
-                                    <td>{{ formatDate(rent.end) }}</td>
-                                    <td>{{ format(preis(rent)) }}</td>
-                                    <td>
-                                        {{
-                                            rent.customer
-                                                ? rent.customer.name
-                                                : "Mieter gelöscht"
-                                        }}
-                                    </td>
-                                    <td>
-                                        {{
-                                            rent.owner
-                                                ? rent.owner.name
-                                                : "Vermieter gelöscht"
-                                        }}
-                                    </td>
-                                    <td>{{ rent.kaution }} $</td>
-                                    <td>{{ rent.vertrag }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <th scope="row">
+                                                OOT-{{ rent.id }}
+                                            </th>
+                                            <td>{{ rent.name }}</td>
+                                            <td>{{ rent.typ }}</td>
+                                            <td>{{ rent.mietdauer }}</td>
+                                            <td>{{ rent.rabatt }}%</td>
+                                            <td>
+                                                {{ format(rent.tagespreis) }}
+                                            </td>
+                                            <td>
+                                                {{ format(rent.wochenpreis) }}
+                                            </td>
+                                            <td>
+                                                {{ format(rent.monatspreis) }}
+                                            </td>
+                                            <td>{{ rent.berechnungsindex }}</td>
+                                            <td>
+                                                {{ formatDate(rent.start) }}
+                                            </td>
+                                            <td>{{ formatDate(rent.end) }}</td>
+                                            <td>{{ format(preis(rent)) }}</td>
+                                            <td>
+                                                {{
+                                                    rent.customer
+                                                        ? rent.customer.name
+                                                        : "Mieter gelöscht"
+                                                }}
+                                            </td>
+                                            <td>
+                                                {{
+                                                    rent.owner
+                                                        ? rent.owner.name
+                                                        : "Vermieter gelöscht"
+                                                }}
+                                            </td>
+                                            <td>{{ rent.kaution }} $</td>
+                                            <td>{{ rent.vertrag }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

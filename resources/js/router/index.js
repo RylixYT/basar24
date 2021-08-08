@@ -1,5 +1,6 @@
 import Home from "../views/Home";
 import Kunde from "../views/Kunde";
+import Header from "../views/Header";
 import Fahrzeug from "../views/Fahrzeug";
 import Mietfahrzeuge from "../views/Mietfahrzeuge";
 import Kaution from "../views/Kaution";
@@ -16,6 +17,10 @@ export const routes = [
     {
         path: "/",
         component: Home
+    },
+    {
+        path: "/header",
+        component: Header
     },
     {
         path: "/customers",

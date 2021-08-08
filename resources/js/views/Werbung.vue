@@ -47,53 +47,57 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Werbungen verwalten</strong><br />
-                        <span class="d-block">
-                            Zum editieren einfach in die Tabellenzelle tippen.
-                        </span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th class="w-25">Bild</th>
-                                    <th>Link</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="(werbung, index) of ads"
-                                    :key="index"
-                                >
-                                    <th scope="row">{{ index + 1 }}</th>
-                                    <td>
-                                        <img :src="werbung.bild" />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="werbung.bild"
-                                            @input="updateData(werbung)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <button
-                                            class="btn btn-danger"
-                                            @click="deleteData(werbung.id)"
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong>Werbungen verwalten</strong><br />
+                                <span class="d-block">
+                                    Zum editieren einfach in die Tabellenzelle
+                                    tippen.
+                                </span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th class="w-25">Bild</th>
+                                            <th>Link</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(werbung, index) of ads"
+                                            :key="index"
                                         >
-                                            <i class="fa fa-trash"></i> Löschen
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <th scope="row">{{ index + 1 }}</th>
+                                            <td>
+                                                <img :src="werbung.bild" />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="werbung.bild"
+                                                    @input="updateData(werbung)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-danger"
+                                                    @click="
+                                                        deleteData(werbung.id)
+                                                    "
+                                                >
+                                                    <i class="fa fa-trash"></i>
+                                                    Löschen
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,13 @@
                     </router-link>
                 </li>
             </router-link>
+            <router-link to="/header" custom v-slot="{ isExactActive }">
+                <li :class="[isExactActive && 'active']">
+                    <router-link to="/header">
+                        <i class="icon-picture"></i>Header
+                    </router-link>
+                </li>
+            </router-link>
             <router-link to="/customers" custom v-slot="{ isExactActive }">
                 <li :class="[isExactActive && 'active']">
                     <router-link to="/customers">

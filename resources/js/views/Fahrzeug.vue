@@ -199,166 +199,179 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Fahrzeuge verwalten</strong><br />
-                        <span class="d-block">
-                            Zum editieren einfach in die Tabellenzelle tippen.
-                        </span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Model</th>
-                                    <th>Antrieb</th>
-                                    <th>Fahrzeugart</th>
-                                    <th>Klasse</th>
-                                    <th>Kraftstoff</th>
-                                    <th>PS</th>
-                                    <th>Sitze</th>
-                                    <th>Kofferraum</th>
-                                    <th>Neupreis</th>
-                                    <th>Max. Km/h</th>
-                                    <th>liter/km</th>
-                                    <th>0-100</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(car, index) of cars" :key="index">
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.model"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <select
-                                            class="form-control"
-                                            v-model="car.antrieb"
-                                            @change="updateData(car)"
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong>Fahrzeuge verwalten</strong><br />
+                                <span class="d-block">
+                                    Zum editieren einfach in die Tabellenzelle
+                                    tippen.
+                                </span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>Antrieb</th>
+                                            <th>Fahrzeugart</th>
+                                            <th>Klasse</th>
+                                            <th>Kraftstoff</th>
+                                            <th>PS</th>
+                                            <th>Sitze</th>
+                                            <th>Kofferraum</th>
+                                            <th>Neupreis</th>
+                                            <th>Max. Km/h</th>
+                                            <th>liter/km</th>
+                                            <th>0-100</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(car, index) of cars"
+                                            :key="index"
                                         >
-                                            <option value=""
-                                                >Antrieb auswählen</option
-                                            >
-                                            <option value="Front">Front</option>
-                                            <option value="Heck">Heck</option>
-                                            <option value="Allrad"
-                                                >Allrad</option
-                                            >
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select
-                                            class="form-control"
-                                            v-model="car.art"
-                                            @change="updateData(car)"
-                                        >
-                                            <option value="">
-                                                Art auswählen
-                                            </option>
-                                            <option value="PKW">PKW</option>
-                                            <option value="Motorrad">
-                                                Motorrad
-                                            </option>
-                                            <option value="Transporter">
-                                                Transporter
-                                            </option>
-                                            <option value="Boot">Boot</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.klasse"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <select
-                                            class="form-control"
-                                            v-model="car.kraftstoff"
-                                            @change="updateData(car)"
-                                        >
-                                            <option value="Diesel">
-                                                Diesel
-                                            </option>
-                                            <option value="Benzin">
-                                                Benzin
-                                            </option>
-                                            <option value="Strom">
-                                                Strom
-                                            </option>
-                                            <option value="-">
-                                                -
-                                            </option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.ps"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.sitze"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.kofferraum"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.neupreis"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.max"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.verbrauch"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            v-model="car.beschleunigung"
-                                            @input="updateData(car)"
-                                        />
-                                    </td>
-                                    <td>
-                                        <button
-                                            class="btn btn-danger"
-                                            @click="deleteData(car.id)"
-                                        >
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.model"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <select
+                                                    class="form-control"
+                                                    v-model="car.antrieb"
+                                                    @change="updateData(car)"
+                                                >
+                                                    <option value=""
+                                                        >Antrieb
+                                                        auswählen</option
+                                                    >
+                                                    <option value="Front"
+                                                        >Front</option
+                                                    >
+                                                    <option value="Heck"
+                                                        >Heck</option
+                                                    >
+                                                    <option value="Allrad"
+                                                        >Allrad</option
+                                                    >
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select
+                                                    class="form-control"
+                                                    v-model="car.art"
+                                                    @change="updateData(car)"
+                                                >
+                                                    <option value="">
+                                                        Art auswählen
+                                                    </option>
+                                                    <option value="PKW"
+                                                        >PKW</option
+                                                    >
+                                                    <option value="Motorrad">
+                                                        Motorrad
+                                                    </option>
+                                                    <option value="Transporter">
+                                                        Transporter
+                                                    </option>
+                                                    <option value="Boot"
+                                                        >Boot</option
+                                                    >
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.klasse"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <select
+                                                    class="form-control"
+                                                    v-model="car.kraftstoff"
+                                                    @change="updateData(car)"
+                                                >
+                                                    <option value="Diesel">
+                                                        Diesel
+                                                    </option>
+                                                    <option value="Benzin">
+                                                        Benzin
+                                                    </option>
+                                                    <option value="Strom">
+                                                        Strom
+                                                    </option>
+                                                    <option value="-">
+                                                        -
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.ps"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.sitze"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.kofferraum"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.neupreis"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.max"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.verbrauch"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    v-model="car.beschleunigung"
+                                                    @input="updateData(car)"
+                                                />
+                                            </td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-danger"
+                                                    @click="deleteData(car.id)"
+                                                >
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -68,111 +68,121 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Fahrzeugpreise verwalten</strong><br />
-                        <span class="d-block">
-                            Zum editieren einfach in die Tabellenzelle tippen.
-                        </span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Fahrzeug</th>
-                                    <th>Neupreis</th>
-                                    <th>Rabatt</th>
-                                    <th>Tagespreis</th>
-                                    <th>Wochenpreis</th>
-                                    <th>Monatspreis</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(car, index) of cars" :key="index">
-                                    <th scope="row">{{ index + 1 }}</th>
-                                    <td>
-                                        {{ car.model }}
-                                    </td>
-                                    <td class="d-flex">
-                                        $
-                                        <input
-                                            type="text"
-                                            @input="updateCar(car)"
-                                            v-model="car.neupreis"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            @input="updateCar(car)"
-                                            v-model="car.rabatt"
-                                        />
-                                    </td>
-                                    <td>
-                                        {{
-                                            car.art == "Motorrad"
-                                                ? format(
-                                                      (car.neupreis / 365) *
-                                                          discount.tag *
-                                                          discount.gesamt *
-                                                          car.rabatt *
-                                                          2
-                                                  )
-                                                : format(
-                                                      (car.neupreis / 365) *
-                                                          discount.tag *
-                                                          discount.gesamt *
-                                                          car.rabatt
-                                                  )
-                                        }}
-                                    </td>
-                                    <td>
-                                        {{
-                                            car.art == "Motorrad"
-                                                ? format(
-                                                      (car.neupreis / 365) *
-                                                          7 *
-                                                          discount.woche *
-                                                          discount.gesamt *
-                                                          car.rabatt *
-                                                          1.5
-                                                  )
-                                                : format(
-                                                      (car.neupreis / 365) *
-                                                          7 *
-                                                          discount.woche *
-                                                          discount.gesamt *
-                                                          car.rabatt
-                                                  )
-                                        }}
-                                    </td>
-                                    <td>
-                                        {{
-                                            car.art == "Motorrad"
-                                                ? format(
-                                                      (car.neupreis / 365) *
-                                                          30.5 *
-                                                          discount.monat *
-                                                          discount.gesamt *
-                                                          car.rabatt *
-                                                          1.5
-                                                  )
-                                                : format(
-                                                      (car.neupreis / 365) *
-                                                          30.5 *
-                                                          discount.monat *
-                                                          discount.gesamt *
-                                                          car.rabatt
-                                                  )
-                                        }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong>Fahrzeugpreise verwalten</strong><br />
+                                <span class="d-block">
+                                    Zum editieren einfach in die Tabellenzelle
+                                    tippen.
+                                </span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Fahrzeug</th>
+                                            <th>Neupreis</th>
+                                            <th>Rabatt</th>
+                                            <th>Tagespreis</th>
+                                            <th>Wochenpreis</th>
+                                            <th>Monatspreis</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(car, index) of cars"
+                                            :key="index"
+                                        >
+                                            <th scope="row">{{ index + 1 }}</th>
+                                            <td>
+                                                {{ car.model }}
+                                            </td>
+                                            <td class="d-flex">
+                                                $
+                                                <input
+                                                    type="text"
+                                                    @input="updateCar(car)"
+                                                    v-model="car.neupreis"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    @input="updateCar(car)"
+                                                    v-model="car.rabatt"
+                                                />
+                                            </td>
+                                            <td>
+                                                {{
+                                                    car.art == "Motorrad"
+                                                        ? format(
+                                                              (car.neupreis /
+                                                                  365) *
+                                                                  discount.tag *
+                                                                  discount.gesamt *
+                                                                  car.rabatt *
+                                                                  2
+                                                          )
+                                                        : format(
+                                                              (car.neupreis /
+                                                                  365) *
+                                                                  discount.tag *
+                                                                  discount.gesamt *
+                                                                  car.rabatt
+                                                          )
+                                                }}
+                                            </td>
+                                            <td>
+                                                {{
+                                                    car.art == "Motorrad"
+                                                        ? format(
+                                                              (car.neupreis /
+                                                                  365) *
+                                                                  7 *
+                                                                  discount.woche *
+                                                                  discount.gesamt *
+                                                                  car.rabatt *
+                                                                  1.5
+                                                          )
+                                                        : format(
+                                                              (car.neupreis /
+                                                                  365) *
+                                                                  7 *
+                                                                  discount.woche *
+                                                                  discount.gesamt *
+                                                                  car.rabatt
+                                                          )
+                                                }}
+                                            </td>
+                                            <td>
+                                                {{
+                                                    car.art == "Motorrad"
+                                                        ? format(
+                                                              (car.neupreis /
+                                                                  365) *
+                                                                  30.5 *
+                                                                  discount.monat *
+                                                                  discount.gesamt *
+                                                                  car.rabatt *
+                                                                  1.5
+                                                          )
+                                                        : format(
+                                                              (car.neupreis /
+                                                                  365) *
+                                                                  30.5 *
+                                                                  discount.monat *
+                                                                  discount.gesamt *
+                                                                  car.rabatt
+                                                          )
+                                                }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

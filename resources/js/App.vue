@@ -44,6 +44,14 @@ export default {
 </script>
 
 <style lang="scss">
+.form-group {
+    margin-bottom: 0.52vw;
+}
+input,
+th {
+    color: #fff !important;
+}
+
 .v-app,
 .v-application {
     background: transparent !important;

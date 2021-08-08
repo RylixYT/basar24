@@ -17,7 +17,8 @@ export default new Vuex.Store({
         deposits: [],
         discounts: [],
         werb: [],
-        rents: []
+        rents: [],
+        header: []
     },
     mutations: {
         set(state, payload) {
@@ -63,6 +64,7 @@ export default new Vuex.Store({
         getDeposits: state => state.deposits,
         getDiscounts: state => state.discounts,
         getAds: state => state.werb,
-        getRents: state => state.rents
+        getRents: state => state.rents,
+        getHeaders: state => state.header
     }
 });

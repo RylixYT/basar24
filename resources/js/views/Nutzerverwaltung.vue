@@ -9,95 +9,102 @@
         <!-- Forms -->
         <section class="no-padding-top">
             <div class="container-fluid">
-                <!-- Basic Form-->
-                <div class="col-lg-12">
-                    <div class="block">
-                        <div class="title">
-                            <strong class="d-block">Registrierungshash</strong>
-                            <span class="d-block">
-                                Mit diesem Hash können sich Leute registrieren.
-                                Der Hash wechselt nach jeder Registrierung.
-                                Geben Sie diesen Hash an keine dritten Personen
-                                weiter, die sich hier nicht registrieren sollen.
-                            </span>
-                        </div>
-                        <div class="block-body">
-                            <div class="form-group" v-if="users[0]">
-                                <label class="form-control-label"
-                                    >Registrierungshash</label
+                <div class="row">
+                    <!-- Basic Form-->
+                    <div class="col-lg-12">
+                        <div class="block">
+                            <div class="title">
+                                <strong class="d-block"
+                                    >Registrierungshash</strong
                                 >
-                                <input
-                                    class="form-control"
-                                    disabled
-                                    :value="users[0].nextHash"
-                                />
+                                <span class="d-block">
+                                    Mit diesem Hash können sich Leute
+                                    registrieren. Der Hash wechselt nach jeder
+                                    Registrierung. Geben Sie diesen Hash an
+                                    keine dritten Personen weiter, die sich hier
+                                    nicht registrieren sollen.
+                                </span>
+                            </div>
+                            <div class="block-body">
+                                <div class="form-group" v-if="users[0]">
+                                    <label class="form-control-label"
+                                        >Registrierungshash</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        disabled
+                                        :value="users[0].nextHash"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="block">
-                        <div class="title">
-                            <strong>Nutzer</strong>
-                            <span class="d-block">
-                                Zum editieren einfach in die Tabellenzelle
-                                tippen.
-                            </span>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>StateV Mail</th>
-                                        <th>Bearbeiten?</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr
-                                        v-for="(nutzer, index) in users"
-                                        v-bind:key="index"
-                                    >
-                                        <th>{{ index + 1 }}</th>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                v-model="nutzer.name"
-                                                @input="updateUser(nutzer)"
-                                            />
-                                        </td>
-                                        <td>{{ nutzer.email }}</td>
-                                        <td>
-                                            <div
-                                                class="i-checks"
-                                                v-if="index > 1"
-                                            >
+                    <div class="col-lg-12">
+                        <div class="block">
+                            <div class="title">
+                                <strong>Nutzer</strong>
+                                <span class="d-block">
+                                    Zum editieren einfach in die Tabellenzelle
+                                    tippen.
+                                </span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>StateV Mail</th>
+                                            <th>Bearbeiten?</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(nutzer, index) in users"
+                                            v-bind:key="index"
+                                        >
+                                            <th>{{ index + 1 }}</th>
+                                            <td>
                                                 <input
-                                                    id="admin"
-                                                    type="checkbox"
-                                                    v-model="nutzer.isAdmin"
-                                                    class="checkbox-template"
-                                                    @change="updateUser(nutzer)"
+                                                    type="text"
+                                                    v-model="nutzer.name"
+                                                    @input="updateUser(nutzer)"
                                                 />
-                                                <label for="admin"></label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <button
-                                                v-if="index > 1"
-                                                class="btn btn-danger"
-                                                v-on:click="
-                                                    deleteUser(nutzer.id)
-                                                "
-                                            >
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            </td>
+                                            <td>{{ nutzer.email }}</td>
+                                            <td>
+                                                <div
+                                                    class="i-checks"
+                                                    v-if="index > 1"
+                                                >
+                                                    <input
+                                                        id="admin"
+                                                        type="checkbox"
+                                                        v-model="nutzer.isAdmin"
+                                                        class="checkbox-template"
+                                                        @change="
+                                                            updateUser(nutzer)
+                                                        "
+                                                    />
+                                                    <label for="admin"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button
+                                                    v-if="index > 1"
+                                                    class="btn btn-danger"
+                                                    v-on:click="
+                                                        deleteUser(nutzer.id)
+                                                    "
+                                                >
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

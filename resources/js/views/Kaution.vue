@@ -78,181 +78,213 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Offene Kautionen verwalten</strong><br />
-                        <span class="d-block">
-                            Zum editieren einfach in die Tabellenzelle tippen.
-                        </span>
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong>Offene Kautionen verwalten</strong
+                                ><br />
+                                <span class="d-block">
+                                    Zum editieren einfach in die Tabellenzelle
+                                    tippen.
+                                </span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Wert</th>
+                                            <th>VBAN Sender</th>
+                                            <th>VBAN Empfänger</th>
+                                            <th>Bemerkung</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(kaution,
+                                            index) of openDeposits"
+                                            :key="index"
+                                        >
+                                            <th
+                                                scope="row"
+                                                :class="{
+                                                    open: kaution.typ == 'hin',
+                                                    index: true
+                                                }"
+                                            >
+                                                {{ index + 1 }}
+                                            </th>
+                                            <td class="d-flex">
+                                                $&nbsp;
+                                                <input
+                                                    type="text"
+                                                    @input="updateData(kaution)"
+                                                    v-model="kaution.wert"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    @input="updateData(kaution)"
+                                                    v-model="
+                                                        kaution.vban_sender
+                                                    "
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    @input="updateData(kaution)"
+                                                    v-model="
+                                                        kaution.vban_empfaenger
+                                                    "
+                                                />
+                                            </td>
+                                            <td>
+                                                <textarea
+                                                    class="form-control"
+                                                    @input="updateData(kaution)"
+                                                    v-model="kaution.bemerkung"
+                                                />
+                                            </td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-danger"
+                                                    @click="
+                                                        deleteData(kaution.id)
+                                                    "
+                                                >
+                                                    <i class="fa fa-trash"></i>
+                                                    Löschen
+                                                </button>
+                                                <button
+                                                    class="btn btn-warning"
+                                                    @click="
+                                                        returnMoney(kaution)
+                                                    "
+                                                >
+                                                    <i
+                                                        class="fa fa-arrow-circle-up"
+                                                    >
+                                                    </i>
+                                                    Zurücküberweisen
+                                                </button>
+                                                <button
+                                                    class="btn btn-success"
+                                                    @click="
+                                                        changeFertig(kaution)
+                                                    "
+                                                >
+                                                    <i class="fa fa-money"></i>
+                                                    Behalten
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Wert</th>
-                                    <th>VBAN Sender</th>
-                                    <th>VBAN Empfänger</th>
-                                    <th>Bemerkung</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="(kaution, index) of openDeposits"
-                                    :key="index"
-                                >
-                                    <th
-                                        scope="row"
-                                        :class="{
-                                            open: kaution.typ == 'hin',
-                                            index: true
-                                        }"
-                                    >
-                                        {{ index + 1 }}
-                                    </th>
-                                    <td class="d-flex">
-                                        $&nbsp;
-                                        <input
-                                            type="text"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.wert"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.vban_sender"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.vban_empfaenger"
-                                        />
-                                    </td>
-                                    <td>
-                                        <textarea
-                                            class="form-control"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.bemerkung"
-                                        />
-                                    </td>
-                                    <td>
-                                        <button
-                                            class="btn btn-danger"
-                                            @click="deleteData(kaution.id)"
+                    <div class="col-lg-12">
+                        <div class="block margin-bottom-sm">
+                            <div class="title">
+                                <strong
+                                    >Abgeschlossene Kautionen verwalten</strong
+                                ><br />
+                                <span class="d-block">
+                                    Zum editieren einfach in die Tabellenzelle
+                                    tippen.
+                                </span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Wert</th>
+                                            <th>VBAN Sender</th>
+                                            <th>VBAN Empfänger</th>
+                                            <th>Bemerkung</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(kaution,
+                                            index) of closedDeposits"
+                                            :key="index"
                                         >
-                                            <i class="fa fa-trash"></i> Löschen
-                                        </button>
-                                        <button
-                                            class="btn btn-warning"
-                                            @click="returnMoney(kaution)"
-                                        >
-                                            <i class="fa fa-arrow-circle-up">
-                                            </i>
-                                            Zurücküberweisen
-                                        </button>
-                                        <button
-                                            class="btn btn-success"
-                                            @click="changeFertig(kaution)"
-                                        >
-                                            <i class="fa fa-money"></i> Behalten
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="block margin-bottom-sm">
-                    <div class="title">
-                        <strong>Abgeschlossene Kautionen verwalten</strong
-                        ><br />
-                        <span class="d-block">
-                            Zum editieren einfach in die Tabellenzelle tippen.
-                        </span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Wert</th>
-                                    <th>VBAN Sender</th>
-                                    <th>VBAN Empfänger</th>
-                                    <th>Bemerkung</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr
-                                    v-for="(kaution, index) of closedDeposits"
-                                    :key="index"
-                                >
-                                    <th
-                                        scope="row"
-                                        :class="{
-                                            open: kaution.typ == 'hin',
-                                            index: true
-                                        }"
-                                    >
-                                        {{ index + 1 }}
-                                    </th>
-                                    <td class="d-flex">
-                                        $&nbsp;
-                                        <input
-                                            type="text"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.wert"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.vban_sender"
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.vban_empfaenger"
-                                        />
-                                    </td>
-                                    <td>
-                                        <textarea
-                                            class="form-control"
-                                            @input="updateData(kaution)"
-                                            v-model="kaution.bemerkung"
-                                        />
-                                    </td>
-                                    <td>
-                                        <button
-                                            v-if="kaution.typ == 'hin'"
-                                            class="btn btn-success"
-                                            @click="changeFertig(kaution)"
-                                        >
-                                            <i class="fa fa-refresh"></i> Öffnen
-                                        </button>
-                                        <button
-                                            class="btn btn-danger"
-                                            @click="deleteData(kaution.id)"
-                                        >
-                                            <i class="fa fa-trash"></i> Löschen
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <th
+                                                scope="row"
+                                                :class="{
+                                                    open: kaution.typ == 'hin',
+                                                    index: true
+                                                }"
+                                            >
+                                                {{ index + 1 }}
+                                            </th>
+                                            <td class="d-flex">
+                                                $&nbsp;
+                                                <input
+                                                    type="text"
+                                                    @input="updateData(kaution)"
+                                                    v-model="kaution.wert"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    @input="updateData(kaution)"
+                                                    v-model="
+                                                        kaution.vban_sender
+                                                    "
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    @input="updateData(kaution)"
+                                                    v-model="
+                                                        kaution.vban_empfaenger
+                                                    "
+                                                />
+                                            </td>
+                                            <td>
+                                                <textarea
+                                                    class="form-control"
+                                                    @input="updateData(kaution)"
+                                                    v-model="kaution.bemerkung"
+                                                />
+                                            </td>
+                                            <td>
+                                                <button
+                                                    v-if="kaution.typ == 'hin'"
+                                                    class="btn btn-success"
+                                                    @click="
+                                                        changeFertig(kaution)
+                                                    "
+                                                >
+                                                    <i
+                                                        class="fa fa-refresh"
+                                                    ></i>
+                                                    Öffnen
+                                                </button>
+                                                <button
+                                                    class="btn btn-danger"
+                                                    @click="
+                                                        deleteData(kaution.id)
+                                                    "
+                                                >
+                                                    <i class="fa fa-trash"></i>
+                                                    Löschen
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

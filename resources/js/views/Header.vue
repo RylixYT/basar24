@@ -1,9 +1,9 @@
 <template>
     <div>
-        <!-- Page Header -->
+        <!-- Page Heheaderer -->
         <div class="page-header mb-4">
             <div class="container-fluid">
-                <h2 class="h5 no-margin-bottom">Kunden</h2>
+                <h2 class="h5 no-margin-bottom">Header</h2>
             </div>
         </div>
         <!-- Forms -->
@@ -14,11 +14,11 @@
                     <div class="col-lg-12">
                         <div class="block">
                             <div class="title">
-                                <strong class="d-block"
-                                    >Kunden hinzufügen</strong
-                                >
+                                <strong class="d-block">
+                                    Header hinzufügen
+                                </strong>
                                 <span class="d-block">
-                                    Formular ausfüllen, um einen Kunden
+                                    Formular ausfüllen, um eine Header
                                     hinzuzufügen.
                                 </span>
                             </div>
@@ -26,35 +26,13 @@
                                 <form>
                                     <div class="form-group">
                                         <label class="form-control-label">
-                                            Name
+                                            Bild
                                         </label>
                                         <input
                                             type="text"
-                                            placeholder="Max Mustermann"
+                                            placeholder="pic.statev.de/i/abc123.png"
                                             class="form-control"
-                                            v-model="customer.name"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            Telefon
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="1822-12345678"
-                                            class="form-control"
-                                            v-model="customer.telefon"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            VBAN
-                                        </label>
-                                        <input
-                                            type="number"
-                                            placeholder="123456"
-                                            class="form-control"
-                                            v-model="customer.vban"
+                                            v-model="header.bild"
                                         />
                                     </div>
                                     <div class="form-group">
@@ -62,9 +40,7 @@
                                             type="submit"
                                             value="Hinzufügen"
                                             class="btn btn-primary"
-                                            @click.prevent="
-                                                insertData(customer)
-                                            "
+                                            @click.prevent="insertData(header)"
                                         />
                                     </div>
                                 </form>
@@ -74,7 +50,7 @@
                     <div class="col-lg-12">
                         <div class="block margin-bottom-sm">
                             <div class="title">
-                                <strong>Kunden verwalten</strong><br />
+                                <strong>Header verwalten</strong><br />
                                 <span class="d-block">
                                     Zum editieren einfach in die Tabellenzelle
                                     tippen.
@@ -85,52 +61,33 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Telefon</th>
-                                            <th>VBAN</th>
-                                            <th>Bemerkung</th>
+                                            <th class="w-25">Bild</th>
+                                            <th>Link</th>
                                             <th></th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         <tr
-                                            v-for="(kunde, index) of customers"
+                                            v-for="(header, index) of headers"
                                             :key="index"
                                         >
                                             <th scope="row">{{ index + 1 }}</th>
                                             <td>
-                                                <input
-                                                    type="text"
-                                                    @input="updateData(kunde)"
-                                                    v-model="kunde.name"
-                                                />
+                                                <img :src="header.bild" />
                                             </td>
                                             <td>
                                                 <input
                                                     type="text"
-                                                    @input="updateData(kunde)"
-                                                    v-model="kunde.telefon"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    @input="updateData(kunde)"
-                                                    v-model="kunde.vban"
-                                                />
-                                            </td>
-                                            <td>
-                                                <textarea
-                                                    class="form-control"
-                                                    @input="updateData(kunde)"
-                                                    v-model="kunde.bemerkung"
+                                                    v-model="header.bild"
+                                                    @input="updateData(header)"
                                                 />
                                             </td>
                                             <td>
                                                 <button
                                                     class="btn btn-danger"
                                                     @click="
-                                                        deleteData(kunde.id)
+                                                        deleteData(header.id)
                                                     "
                                                 >
                                                     <i class="fa fa-trash"></i>
@@ -154,50 +111,46 @@ import { mapGetters, mapActions } from "vuex";
 export default {
     data() {
         return {
-            customer: {
-                name: "",
-                telefon: "",
-                vban: null
+            header: {
+                bild: ""
             }
         };
     },
     mounted() {
-        this.set("customers");
+        this.set("header");
     },
     methods: {
         ...mapActions(["set", "insert", "update", "delete"]),
         insertData(data) {
             this.insert({
                 data: data,
-                route: "customers"
+                route: "header"
             }).then(() => {
-                this.customer = {
-                    name: "",
-                    telefon: "",
-                    vban: null
+                this.header = {
+                    bild: ""
                 };
-                this.set("customers");
+                this.set("header");
             });
         },
         updateData(data) {
             this.update({
                 id: data.id,
                 data: data,
-                route: "customers"
+                route: "header"
             });
         },
         deleteData(id) {
             this.delete({
                 id: id,
-                route: "customers"
+                route: "header"
             }).then(() => {
-                this.set("customers");
+                this.set("header");
             });
         }
     },
     computed: {
         ...mapGetters({
-            customers: "getCustomers"
+            headers: "getHeaders"
         })
     }
 };
@@ -206,5 +159,11 @@ export default {
 td input {
     all: unset;
     width: 100%;
+}
+td img {
+    width: 100%;
+}
+.w-25 {
+    width: 25%;
 }
 </style>
