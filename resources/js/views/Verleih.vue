@@ -81,18 +81,14 @@
                                             </td>
                                             <td>{{ rent.kaution }} $</td>
                                             <td>
-                                                <button
-                                                    class="btn btn-sm btn-dark mr-2"
-                                                    @click="
+                                                <a
+                                                    @click.prevent="
                                                         openPicture(
                                                             rent.vertrag
                                                         )
                                                     "
+                                                    >>{{ rent.vertrag }}</a
                                                 >
-                                                    <i
-                                                        class="icon icon-contract"
-                                                    ></i>
-                                                </button>
                                             </td>
                                             <td>
                                                 <button
@@ -137,6 +133,7 @@
                                             <th>Eigentümer</th>
                                             <th>Kaution</th>
                                             <th>Vertrag</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -181,7 +178,24 @@
                                                 }}
                                             </td>
                                             <td>{{ rent.kaution }} $</td>
-                                            <td>{{ rent.vertrag }}</td>
+                                            <td>
+                                                <a
+                                                    @click.prevent="
+                                                        openPicture(
+                                                            rent.vertrag
+                                                        )
+                                                    "
+                                                    >>{{ rent.vertrag }}</a
+                                                >
+                                            </td>
+                                            <td>
+                                                <button
+                                                    class="btn btn-danger"
+                                                    @click="deleteVerleih(rent)"
+                                                >
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -202,7 +216,7 @@ export default {
         this.set("rents");
     },
     methods: {
-        ...mapActions(["set", "insert", "update"]),
+        ...mapActions(["set", "insert", "update", "delete"]),
         format(number) {
             return Number(Math.round(number / 10) * 10).toLocaleString(
                 "de-DE", // leave undefined to use the visitor's browser
@@ -261,6 +275,14 @@ export default {
             });
             this.set("rents");
             this.set("rentables");
+        },
+        deleteVerleih(rent) {
+            this.delete({
+                id: rent.id,
+                route: "rents"
+            }).then(() => {
+                this.set("rents");
+            });
         }
     },
     computed: {

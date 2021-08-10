@@ -9,7 +9,7 @@ class DepositsController extends Controller
 {
     public function index()
     {
-        $deposits = Deposit::latest()->get();
+        $deposits = Deposit::orderBy("id", "ASC")->get();
 
         return response($deposits, 200);
     }
@@ -19,7 +19,6 @@ class DepositsController extends Controller
         $deposit = Deposit::create($request->all());
 
         return response($deposit, 201);
-
     }
 
     public function show($id)

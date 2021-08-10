@@ -415,7 +415,10 @@
                                         von
                                         {{
                                             tage && mietzahlung
-                                                ? format(mietzahlung)
+                                                ? format(
+                                                      (mietzahlung * rabatt) /
+                                                          100
+                                                  )
                                                 : "!!!Fehler: Tagesanzahl muss größer 0 und ein Fahrzeug ausgewählt sein!!!"
                                         }}
                                         , welche am Tag des Mietens mit dem
@@ -727,7 +730,7 @@ export default {
                     (this.activeCar.car.neupreis / 365) *
                     this.discount.tag *
                     this.discount.gesamt *
-                    this.activeCar.rabatt *
+                    this.activeCar.car.rabatt *
                     2
                 );
             return (
@@ -758,15 +761,16 @@ export default {
         },
         monatspreis() {
             if (!this.activeCar) return 0;
-            if (this.activeCar.car.art == "Motorrad")
+            if (this.activeCar.car.art == "Motorrad") {
                 return (
                     (this.activeCar.car.neupreis / 365) *
                     30.5 *
                     this.discount.monat *
                     this.discount.gesamt *
-                    this.activeCar.rabatt *
+                    this.activeCar.car.rabatt *
                     2
                 );
+            }
             return (
                 (this.activeCar.car.neupreis / 365) *
                 30.5 *
@@ -787,12 +791,8 @@ export default {
                 date.isValid(this.end, "YYYY-MM-DD") &&
                 dayDiff > 0
             ) {
-                if (new Date().getHours() < 12) {
-                    return dayDiff + 1;
-                }
                 return dayDiff;
             }
-            return false;
         },
         mietzahlung() {
             if (
