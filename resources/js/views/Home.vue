@@ -415,10 +415,13 @@
                                         von
                                         {{
                                             tage && mietzahlung
-                                                ? format(
-                                                      (mietzahlung * rabatt) /
-                                                          100
-                                                  )
+                                                ? rabatt
+                                                    ? format(
+                                                          (mietzahlung *
+                                                              rabatt) /
+                                                              100
+                                                      )
+                                                    : format(mietzahlung)
                                                 : "!!!Fehler: Tagesanzahl muss größer 0 und ein Fahrzeug ausgewählt sein!!!"
                                         }}
                                         , welche am Tag des Mietens mit dem
@@ -791,7 +794,7 @@ export default {
                 date.isValid(this.end, "YYYY-MM-DD") &&
                 dayDiff > 0
             ) {
-                return dayDiff;
+                return dayDiff - 1;
             }
         },
         mietzahlung() {
