@@ -794,7 +794,7 @@ export default {
                 date.isValid(this.end, "YYYY-MM-DD") &&
                 dayDiff > 0
             ) {
-                return dayDiff + 1;
+                return dayDiff;
             }
         },
         mietzahlung() {
