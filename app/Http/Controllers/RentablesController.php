@@ -52,7 +52,9 @@ class RentablesController extends Controller
     {
         $rentables = Rentable::whereRaw("rent_id <> ''")->with("rent")->get();
         foreach ($rentables as $rentable) {
-            if (($rentable->rent->end == today()->format("Y-m-d") && now()->between(today()->addHours(20), today()->addHours(24))) || $rentable->rent->end < today()->format("Y-m-d")) {
+            if (!property_exists($rentable, "rent") || empty($rentable->rent)) {
+                Rentable::find($rentable->id)->update(["rent_id" => null]);
+            } else if (($rentable->rent->end == today()->format("Y-m-d") && now()->between(today()->addHours(20), today()->addHours(24))) || $rentable->rent->end < today()->format("Y-m-d")) {
                 Rentable::find($rentable->id)->update(["rent_id" => null]);
             }
         }
