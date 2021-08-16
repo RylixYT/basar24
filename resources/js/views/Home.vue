@@ -418,7 +418,7 @@
                                                 ? rabatt
                                                     ? format(
                                                           (mietzahlung *
-                                                              rabatt) /
+                                                              (100 - rabatt)) /
                                                               100
                                                       )
                                                     : format(mietzahlung)
@@ -771,7 +771,7 @@ export default {
                     this.discount.monat *
                     this.discount.gesamt *
                     this.activeCar.car.rabatt *
-                    2
+                    1.5
                 );
             }
             return (
