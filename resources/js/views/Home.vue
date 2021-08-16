@@ -651,7 +651,7 @@ export default {
                 this.insert({
                     data: {
                         typ: "hin", //Hin zu OOT | Zurueck zu kaution
-                        bemerkung: "OOT-" + this.rents.length + 1,
+                        bemerkung: "OOT-" + (this.rents.length + 1),
                         vban_empfaenger: 993990,
                         vban_sender: this.activeMieter.vban,
                         wert: this.kaution
