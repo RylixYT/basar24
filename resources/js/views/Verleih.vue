@@ -48,8 +48,20 @@
                                             </th>
                                             <td>{{ rent.name }}</td>
                                             <td>{{ rent.typ }}</td>
-                                            <td>{{ rent.mietdauer }}</td>
-                                            <td>{{ rent.rabatt }}%</td>
+                                            <td>
+                                                {{
+                                                    (rent.mietdauer = tage(
+                                                        rent
+                                                    ))
+                                                }}
+                                            </td>
+                                            <td class="d-flex">
+                                                <input
+                                                    type="text"
+                                                    v-model="rent.rabatt"
+                                                    @input="updateData(rent)"
+                                                />%
+                                            </td>
                                             <td>
                                                 {{ format(rent.tagespreis) }}
                                             </td>
@@ -61,9 +73,21 @@
                                             </td>
                                             <td>{{ rent.berechnungsindex }}</td>
                                             <td>
-                                                {{ formatDate(rent.start) }}
+                                                <input
+                                                    class="w-100"
+                                                    type="date"
+                                                    v-model="rent.start"
+                                                    @input="updateData(rent)"
+                                                />
                                             </td>
-                                            <td>{{ formatDate(rent.end) }}</td>
+                                            <td>
+                                                <input
+                                                    class="w-100"
+                                                    type="date"
+                                                    v-model="rent.end"
+                                                    @input="updateData(rent)"
+                                                />
+                                            </td>
                                             <td>{{ format(preis(rent)) }}</td>
                                             <td>
                                                 {{
@@ -264,6 +288,21 @@ export default {
                 )
                 .toDays();
         },
+        tage(verleih) {
+            let dayDiff = date
+                .subtract(
+                    date.parse(verleih.end, "YYYY-MM-DD"),
+                    date.parse(verleih.start, "YYYY-MM-DD")
+                )
+                .toDays();
+            if (
+                date.isValid(verleih.start, "YYYY-MM-DD") &&
+                date.isValid(verleih.end, "YYYY-MM-DD") &&
+                dayDiff > 0
+            ) {
+                return dayDiff;
+            }
+        },
         openPicture(bild) {
             this.$parent.$parent.openPicture(bild);
         },
@@ -271,6 +310,22 @@ export default {
             this.update({
                 id: id,
                 data: { end: date.format(new Date(), "YYYY-MM-DD") },
+                route: "rents"
+            });
+            this.set("rents");
+            this.set("rentables");
+        },
+        updateData(rent) {
+            if (rent.mietdauer < 1) return;
+            rent.berechnungsindex =
+                rent.mietdauer < 7
+                    ? "TAG"
+                    : rent.mietdauer > 29
+                    ? "MONAT"
+                    : "WOCHE";
+            this.update({
+                id: rent.id,
+                data: rent,
                 route: "rents"
             });
             this.set("rents");
@@ -293,7 +348,7 @@ export default {
             return this.rents.filter(rent => {
                 if (
                     this.dayDiff(rent.end) > 0 ||
-                    (this.dayDiff(rent.end) == 0 && new Date().getHours() < 20)
+                    (this.dayDiff(rent.end) == 0 && new Date().getHours() < 16)
                 ) {
                     return true;
                 }
@@ -306,9 +361,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 td input {
     all: unset;
     width: 100%;
+    &[type="date"] {
+        display: grid;
+        grid-auto-flow: column;
+    }
 }
 </style>
