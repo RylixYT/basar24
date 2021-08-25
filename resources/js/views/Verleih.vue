@@ -171,7 +171,13 @@
                                             <td>{{ rent.name }}</td>
                                             <td>{{ rent.typ }}</td>
                                             <td>{{ rent.mietdauer }}</td>
-                                            <td>{{ rent.rabatt }}%</td>
+                                            <td class="d-flex">
+                                                <input
+                                                    type="text"
+                                                    v-model="rent.rabatt"
+                                                    @input="updateData(rent)"
+                                                />%
+                                            </td>
                                             <td>
                                                 {{ format(rent.tagespreis) }}
                                             </td>
@@ -183,9 +189,21 @@
                                             </td>
                                             <td>{{ rent.berechnungsindex }}</td>
                                             <td>
-                                                {{ formatDate(rent.start) }}
+                                                <input
+                                                    class="w-100"
+                                                    type="date"
+                                                    v-model="rent.start"
+                                                    @input="updateData(rent)"
+                                                />
                                             </td>
-                                            <td>{{ formatDate(rent.end) }}</td>
+                                            <td>
+                                                <input
+                                                    class="w-100"
+                                                    type="date"
+                                                    v-model="rent.end"
+                                                    @input="updateData(rent)"
+                                                />
+                                            </td>
                                             <td>{{ format(preis(rent)) }}</td>
                                             <td>
                                                 {{

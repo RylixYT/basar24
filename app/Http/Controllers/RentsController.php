@@ -9,7 +9,7 @@ class RentsController extends Controller
 {
     public function index()
     {
-        $rents = Rent::with(["owner", "customer"])->latest()->get();
+        $rents = Rent::with(["owner", "customer"])->orderBy("id", "DESC")->get();
 
         return response($rents, 200);
     }
