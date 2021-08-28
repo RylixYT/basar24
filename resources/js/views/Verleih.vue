@@ -227,7 +227,7 @@
                                                             rent.vertrag
                                                         )
                                                     "
-                                                    >>{{ rent.vertrag }}</a
+                                                    >{{ rent.vertrag }}</a
                                                 >
                                             </td>
                                             <td>
@@ -346,8 +346,6 @@ export default {
                 data: rent,
                 route: "rents"
             });
-            this.set("rents");
-            this.set("rentables");
         },
         deleteVerleih(rent) {
             this.delete({
