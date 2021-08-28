@@ -335,6 +335,7 @@ export default {
         },
         updateData(rent) {
             if (rent.mietdauer < 1) return;
+            rent.mietdauer = this.tage(rent);
             rent.berechnungsindex =
                 rent.mietdauer < 7
                     ? "TAG"
