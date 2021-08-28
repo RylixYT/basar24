@@ -13,7 +13,11 @@
                     <div class="col-lg-12">
                         <div class="block margin-bottom-sm">
                             <div class="title">
-                                <strong>Laufende Vermietungen</strong><br />
+                                <strong
+                                    >Laufende Vermietungen ({{
+                                        offen.length
+                                    }})</strong
+                                ><br />
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -134,7 +138,9 @@
                     <div class="col-lg-12">
                         <div class="block margin-bottom-sm">
                             <div class="title">
-                                <strong>Abgeschlossene Vermietungen</strong
+                                <strong>Abgeschlossene Vermietungen ({{
+                                        closed.length
+                                    }})</strong
                                 ><br />
                             </div>
                             <div class="table-responsive">
