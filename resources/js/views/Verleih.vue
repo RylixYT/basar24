@@ -170,7 +170,13 @@
                                             </th>
                                             <td>{{ rent.name }}</td>
                                             <td>{{ rent.typ }}</td>
-                                            <td>{{ rent.mietdauer }}</td>
+                                            <td>
+                                                {{
+                                                    (rent.mietdauer = tage(
+                                                        rent
+                                                    ))
+                                                }}
+                                            </td>
                                             <td class="d-flex">
                                                 <input
                                                     type="text"
@@ -335,7 +341,6 @@ export default {
         },
         updateData(rent) {
             if (rent.mietdauer < 1) return;
-            rent.mietdauer = this.tage(rent);
             rent.berechnungsindex =
                 rent.mietdauer < 7
                     ? "TAG"
