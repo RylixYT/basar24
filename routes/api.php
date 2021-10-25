@@ -27,7 +27,8 @@ Route::middleware(['auth:api'])->group(function () {
                 "/discounts" => DiscountsController::class,
                 "/werb" => AdsController::class,
                 "/rents" => RentsController::class,
-                "/header" => HeadersController::class
+                "/header" => HeadersController::class,
+                "/vertrag" => VertragsController::class
             ]
         );
     });

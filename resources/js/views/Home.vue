@@ -377,7 +377,11 @@
                             </div>
                             <div class="block-body">
                                 <div class="vertrag">
-                                    <p @click="selectText" id="vertrag">
+                                    <p
+                                        @click="selectText"
+                                        id="vertrag"
+                                        v-if="false"
+                                    >
                                         "Mietvertrag Nr. : OOT-{{
                                             rents.length + 1
                                         }}
@@ -515,6 +519,9 @@
                                         verstanden zu haben und mit seiner
                                         Geltung einverstanden zu sein. "
                                     </p>
+                                    <p @click="selectText" id="vertrag">
+                                        {{ vertragsText() }}
+                                    </p>
                                 </div>
                                 <div class="form-group mt-5">
                                     <label class="form-control-label">
@@ -581,6 +588,7 @@ export default {
         this.set("rentables");
         this.set("rents");
         this.set("discounts");
+        this.set("vertrag");
     },
     methods: {
         ...mapActions(["set", "insert", "update"]),
@@ -709,6 +717,11 @@ export default {
                 return true;
             }
             return false;
+        },
+        vertragsText() {
+            let result = this.vertragVorlage.text;
+            result = result.replace("#vertragsnummer", this.rents.length + 1);
+            return result;
         }
     },
     computed: {
@@ -716,7 +729,8 @@ export default {
             customers: "getCustomers",
             cars: "getRentables",
             rents: "getRents",
-            discount: "getDiscounts"
+            discount: "getDiscounts",
+            vertragVorlage: "getVertrag"
         }),
         modelle() {
             return this.cars.map(

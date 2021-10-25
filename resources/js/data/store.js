@@ -18,7 +18,8 @@ export default new Vuex.Store({
         discounts: [],
         werb: [],
         rents: [],
-        header: []
+        header: [],
+        vertrag: []
     },
     mutations: {
         set(state, payload) {
@@ -65,6 +66,7 @@ export default new Vuex.Store({
         getDiscounts: state => state.discounts,
         getAds: state => state.werb,
         getRents: state => state.rents,
-        getHeaders: state => state.header
+        getHeaders: state => state.header,
+        getVertrag: state => state.vertrag
     }
 });

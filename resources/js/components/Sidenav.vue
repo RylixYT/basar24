@@ -17,6 +17,13 @@
                     </router-link>
                 </li>
             </router-link>
+            <router-link to="/vertrag" custom v-slot="{ isExactActive }">
+                <li :class="[isExactActive && 'active']">
+                    <router-link to="/vertrag">
+                        <i class="icon-contract"></i>Vertrag
+                    </router-link>
+                </li>
+            </router-link>
             <router-link to="/customers" custom v-slot="{ isExactActive }">
                 <li :class="[isExactActive && 'active']">
                     <router-link to="/customers">
