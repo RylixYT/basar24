@@ -377,9 +377,7 @@
                             </div>
                             <div class="block-body">
                                 <div class="vertrag">
-                                    <p @click="selectText" id="vertrag">
-                                        {{ vertragsText() }}
-                                    </p>
+                                    <p @click="selectText" id="vertrag">{{ vertragsText() }}</p>
                                 </div>
                                 <div class="form-group mt-5">
                                     <label class="form-control-label">
@@ -735,5 +733,7 @@ td input {
 .vertrag p {
     line-height: 100%;
     font-size: 10px;
+    white-space: pre;
+    white-space: pre-line;
 }
 </style>
