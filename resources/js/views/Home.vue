@@ -377,148 +377,6 @@
                             </div>
                             <div class="block-body">
                                 <div class="vertrag">
-                                    <p
-                                        @click="selectText"
-                                        id="vertrag"
-                                        v-if="false"
-                                    >
-                                        "Mietvertrag Nr. : OOT-{{
-                                            rents.length + 1
-                                        }}
-                                        <br />
-                                        Zwischen O.O.T. Carsharing vertreten
-                                        durch
-                                        <br />
-                                        {{ name }}, im folgenden Vermieter
-                                        genannt,
-                                        <br />
-                                        und <br />
-                                        {{
-                                            activeMieter
-                                                ? activeMieter.name
-                                                : "k.A."
-                                        }}
-                                        , im folgenden Mieter genannt, <br />
-                                        wird folgender Vertrag geschlossen:
-                                        <br />
-                                        <br /><br />
-                                        §1. Vertragsgegenstand <br /><br />
-                                        1.1 Der Mieter mietet das Fahrzeug
-                                        {{
-                                            activeCar ? activeCar.name : "k.A."
-                                        }}
-                                        mit dem Kennzeichen
-                                        {{
-                                            activeCar
-                                                ? activeCar.kennzeichen
-                                                : "k.A."
-                                        }}
-                                        vom {{ formatDate(start) }} bis zum
-                                        {{ formatDate(end) }} um 20 Uhr. <br />
-                                        In der Zeit entsteht eine Mietzahlung
-                                        von
-                                        {{
-                                            tage && mietzahlung
-                                                ? rabatt
-                                                    ? format(
-                                                          (mietzahlung *
-                                                              (100 - rabatt)) /
-                                                              100
-                                                      )
-                                                    : format(mietzahlung)
-                                                : "!!!Fehler: Tagesanzahl muss größer 0 und ein Fahrzeug ausgewählt sein!!!"
-                                        }}
-                                        , welche am Tag des Mietens mit dem
-                                        Verwendungszweck: - OOT-{{
-                                            rents.length + 1
-                                        }}
-                                        - aufs Konto mit der VBAN 870 956
-                                        überwiesen wird. <br />
-                                        1.2 Der Mieter erhält einen Schlüssel
-                                        für das Fahrzeug. Die anderen zwei
-                                        Schlüssel verbleiben beim Vermieter.
-                                        <br /><br />§2. Sicherheit <br /><br />
-                                        2.1 Der Mieter hinterlässt eine Kaution
-                                        von ${{ kaution }},00 auf das Konto mit
-                                        der VBAN 993 990. Nach Beendigung der
-                                        Mietzeit wird die Kaution zurückgezahlt,
-                                        sofern das Fahrzeug zu 90% getankt ist,
-                                        keine sichtbaren Schäden aufweist und
-                                        der Vermieter den Fahrzeugschlüssel
-                                        wieder besitzt. <br /><br />
-                                        §3. Vertragsabschluss <br /><br />
-                                        3.1 Nach dem Mietzeitraum (siehe 1.1)
-                                        hat der Mieter das Fahrzeug sauber, ohne
-                                        sichtbare Schäden und mit einem
-                                        Tankvolumen von mindestens 90% zurück
-                                        zum Vermieter an die Adresse - Del Perro
-                                        Pier 2300 - zu bringen. Dort kann der
-                                        Mieter den Vertrag verlängern oder mit
-                                        der Abgabe des Schlüssels ihn beenden.
-                                        <br /><br />
-                                        §4. Vertragsbruch/Vertragsstrafe
-                                        <br /><br />
-                                        4.1 Sollte in dem vereinbarten
-                                        Mietzeitraum (siehe 1.1) Straftaten oder
-                                        Ordnungswidrigkeiten mit den Fahrzeug
-                                        begangen werden, so übernimmt der Mieter
-                                        dafür die volle Verantwortung und
-                                        Kosten. Dies schließt das Zahlen von
-                                        Straftickets und/oder absitzen/zahlen
-                                        von Haftstrafen mit ein. Je Ticket das
-                                        umgeschrieben werden muss berechnen wir
-                                        $1.000 Aufwandsentschädigung.
-                                        <br /><br />
-                                        §5. Sonstiges <br /><br />
-                                        5.1 Sollte dem Mieter während der
-                                        Mietzeit (siehe 1.1) der Schlüssel
-                                        abhanden kommen, wird dieses von der
-                                        Kaution abgezogen.
-                                        <br />
-                                        5.2 Die Weitergabe des Fahrzeuges
-                                        und/oder des Schlüssels an Drittpersonen
-                                        ist untersagt und wird mit einer
-                                        Strafzahlung von $1.000 berechnet.
-                                        <br />
-                                        5.3 Dem Mieter ist es untersagt Stich-,
-                                        Hieb-, Schlag- oder Schusswaffen im
-                                        Kofferraum aufzubewahren. <br />
-                                        5.4 Dem Mieter ist es untersagt ohne
-                                        schriftliche Absprachen, Änderungen am
-                                        Fahrzeug durchzuführen. <br /><br />
-                                        §6. Salvatorische Klausel <br /><br />
-                                        6.1 Sollten einzelne Bestimmungen dieses
-                                        Vertrages unwirksam oder undurchführbar
-                                        sein oder nach Vertragsschluss unwirksam
-                                        oder undurchführbar werden, bleibt davon
-                                        die Wirksamkeit des Vertrages im Übrigen
-                                        unberührt. An die Stelle der unwirksamen
-                                        oder undurchführbaren Bestimmung soll
-                                        diejenige wirksame und durchführbare
-                                        Regelung treten, deren Wirkungen der
-                                        wirtschaftlichen Zielsetzung am nächsten
-                                        kommen, die die Vertragsparteien mit der
-                                        unwirksamen bzw. undurchführbaren
-                                        Bestimmung verfolgt haben. Die
-                                        vorstehenden Bestimmungen gelten
-                                        entsprechend für den Fall, dass sich der
-                                        Vertrag als lückenhaft erweist.
-                                        <br /><br />
-                                        §7. Gerichtsstand und
-                                        Schlussbestimmungen
-                                        <br /><br />
-                                        7.1 Der Gerichtsstand ist Los Santos -
-                                        San Andreas. <br />
-                                        7.2 Es gelten die aktuellen Gesetze zum
-                                        Zeitpunkt der Unterschrift dieses
-                                        Vertrags.
-                                        <br />
-                                        7.3 Mit Unterzeichnung dieses Vertrags
-                                        bekennt der Mieter, vom Inhalt desselben
-                                        Kenntnis genommen zu haben, diesen
-                                        verstanden zu haben und mit seiner
-                                        Geltung einverstanden zu sein. "
-                                    </p>
                                     <p @click="selectText" id="vertrag">
                                         {{ vertragsText() }}
                                     </p>
@@ -720,7 +578,39 @@ export default {
         },
         vertragsText() {
             let result = this.vertragVorlage.text;
-            result = result.replace("#vertragsnummer", this.rents.length + 1);
+            if (this.rents.length) {
+                result = result.replace(
+                    "#vertragsnummer",
+                    this.rents.length + 1
+                );
+            }
+            result = result.replace("#vermieter", this.name);
+            if (this.activeMieter) {
+                result = result.replace("#mieter", this.activeMieter.name);
+            }
+            if (this.activeCar) {
+                result = result.replace("#fahrzeugname", this.activeCar.name);
+                result = result.replace(
+                    "#kennzeichen",
+                    this.activeCar.kennzeichen
+                );
+            }
+            if (this.start && this.end && this.tage && this.mietzahlung) {
+                result = result.replace(
+                    "#anfangdatum",
+                    this.formatDate(this.start)
+                );
+                result = result.replace("#enddatum", this.formatDate(this.end));
+                result = result.replace(
+                    "#kosten",
+                    this.rabatt
+                        ? this.format(
+                              (this.mietzahlung * (100 - this.rabatt)) / 100
+                          )
+                        : this.format(this.mietzahlung)
+                );
+            }
+            result = result.replace("#kaution", this.kaution);
             return result;
         }
     },
