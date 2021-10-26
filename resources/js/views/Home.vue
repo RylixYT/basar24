@@ -377,7 +377,9 @@
                             </div>
                             <div class="block-body">
                                 <div class="vertrag">
-                                    <p @click="selectText" id="vertrag">{{ vertragsText() }}</p>
+                                    <p @click="selectText" id="vertrag">
+                                        {{ vertragsText() }}
+                                    </p>
                                 </div>
                                 <div class="form-group mt-5">
                                     <label class="form-control-label">
@@ -577,29 +579,35 @@ export default {
         vertragsText() {
             let result = this.vertragVorlage.text;
             if (this.rents.length) {
-                result = result.replace(
+                result = result.replaceAll(
                     "#vertragsnummer",
                     this.rents.length + 1
                 );
             }
-            result = result.replace("#vermieter", this.name);
+            result = result.replaceAll("#vermieter", this.name);
             if (this.activeMieter) {
-                result = result.replace("#mieter", this.activeMieter.name);
+                result = result.replaceAll("#mieter", this.activeMieter.name);
             }
             if (this.activeCar) {
-                result = result.replace("#fahrzeugname", this.activeCar.name);
-                result = result.replace(
+                result = result.replaceAll(
+                    "#fahrzeugname",
+                    this.activeCar.name
+                );
+                result = result.replaceAll(
                     "#kennzeichen",
                     this.activeCar.kennzeichen
                 );
             }
             if (this.start && this.end && this.tage && this.mietzahlung) {
-                result = result.replace(
+                result = result.replaceAll(
                     "#anfangdatum",
                     this.formatDate(this.start)
                 );
-                result = result.replace("#enddatum", this.formatDate(this.end));
-                result = result.replace(
+                result = result.replaceAll(
+                    "#enddatum",
+                    this.formatDate(this.end)
+                );
+                result = result.replaceAll(
                     "#kosten",
                     this.rabatt
                         ? this.format(
@@ -608,7 +616,7 @@ export default {
                         : this.format(this.mietzahlung)
                 );
             }
-            result = result.replace("#kaution", this.kaution);
+            result = result.replaceAll("#kaution", this.kaution);
             return result;
         }
     },
