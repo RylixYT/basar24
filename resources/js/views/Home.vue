@@ -152,7 +152,7 @@
                                         list="kunden"
                                         class="form-control"
                                         v-model="mieter"
-                                        @input="setActiveMieter"
+                                        @input="setActiveMieter()"
                                     />
                                     <datalist id="kunden">
                                         <option
@@ -288,32 +288,6 @@
                                                 }}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>Monatspreis:</th>
-                                            <td>
-                                                {{
-                                                    monatspreis
-                                                        ? format(monatspreis)
-                                                        : "-"
-                                                }}
-                                            </td>
-                                            <td>
-                                                {{
-                                                    monatspreis
-                                                        ? rabatt
-                                                            ? format(
-                                                                  monatspreis -
-                                                                      monatspreis *
-                                                                          (rabatt /
-                                                                              100)
-                                                              )
-                                                            : format(
-                                                                  monatspreis
-                                                              )
-                                                        : "-"
-                                                }}
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -432,7 +406,6 @@ export default {
             model: "",
             activeCar: "",
             mieter: "",
-            activeMieter: "",
             rabatt: 0,
             kaution: 500,
             start: date.format(new Date(), "YYYY-MM-DD"),
@@ -485,15 +458,9 @@ export default {
             }
         },
         setActiveMieter() {
-            if (this.namen.includes(this.mieter)) {
-                this.customers.forEach(customer => {
-                    if (this.mieter == customer.name) {
-                        this.activeMieter = customer;
-                        this.step = 3;
-                    }
-                });
+            if (typeof this.activeMieter != "undefined") {
+                this.step = 3;
             } else {
-                this.activeMieter = "";
                 this.step = 2;
             }
         },
@@ -517,8 +484,8 @@ export default {
                 this.insert({
                     data: {
                         typ: "hin", //Hin zu OOT | Zurueck zu kaution
-                        bemerkung: "OOT-" + (this.rents.length + 1),
-                        vban_empfaenger: 993990,
+                        bemerkung: "DC-" + (this.rents.length + 1),
+                        vban_empfaenger: 100001,
                         vban_sender: this.activeMieter.vban,
                         wert: this.kaution
                     },
@@ -529,7 +496,6 @@ export default {
                 this.insert({
                     data: {
                         name: this.model,
-                        typ: this.activeCar.car.art,
                         vertrag: this.vertrag,
                         vertragsnummer: this.rents.length + 1,
                         rabatt: this.rabatt,
@@ -539,15 +505,7 @@ export default {
                         customer_id: this.activeMieter.id,
                         owner_id: this.activeCar.owner.id,
                         mietdauer: this.tage,
-                        berechnungsindex:
-                            this.tage < 7
-                                ? "TAG"
-                                : this.tage > 29
-                                ? "MONAT"
-                                : "WOCHE",
-                        tagespreis: this.tagespreis,
-                        wochenpreis: this.wochenpreis,
-                        monatspreis: this.monatspreis
+                        preis: this.mietzahlung,
                     },
                     route: "rents"
                 }).then(() => {
@@ -638,59 +596,14 @@ export default {
         },
         tagespreis() {
             if (!this.activeCar) return 0;
-            if (this.activeCar.car.art == "Motorrad")
-                return (
-                    (this.activeCar.car.neupreis / 365) *
-                    this.discount.tag *
-                    this.discount.gesamt *
-                    this.activeCar.car.rabatt *
-                    2
-                );
-            return (
-                (this.activeCar.car.neupreis / 365) *
-                this.discount.tag *
-                this.discount.gesamt *
-                this.activeCar.car.rabatt
-            );
+            return this.activeCar.car.tag;
         },
         wochenpreis() {
             if (!this.activeCar) return 0;
-            if (this.activeCar.car.art == "Motorrad")
-                return (
-                    (this.activeCar.car.neupreis / 365) *
-                    7 *
-                    this.discount.woche *
-                    this.discount.gesamt *
-                    this.activeCar.car.rabatt *
-                    1.5
-                );
-            return (
-                (this.activeCar.car.neupreis / 365) *
-                7 *
-                this.discount.woche *
-                this.discount.gesamt *
-                this.activeCar.car.rabatt
-            );
+            return this.activeCar.car.woche;
         },
-        monatspreis() {
-            if (!this.activeCar) return 0;
-            if (this.activeCar.car.art == "Motorrad") {
-                return (
-                    (this.activeCar.car.neupreis / 365) *
-                    30.5 *
-                    this.discount.monat *
-                    this.discount.gesamt *
-                    this.activeCar.car.rabatt *
-                    1.5
-                );
-            }
-            return (
-                (this.activeCar.car.neupreis / 365) *
-                30.5 *
-                this.discount.monat *
-                this.discount.gesamt *
-                this.activeCar.car.rabatt
-            );
+        activeMieter() {
+            return this.customers.find(el => el.name == this.mieter);
         },
         tage() {
             let dayDiff = date
@@ -711,17 +624,13 @@ export default {
             if (
                 !this.tage ||
                 !this.tagespreis ||
-                !this.wochenpreis ||
-                !this.monatspreis
+                !this.wochenpreis
             )
                 return false;
             if (this.tage < 7) {
                 return this.tagespreis * this.tage;
             }
-            if (this.tage < 30) {
-                return (this.wochenpreis * this.tage) / 7;
-            }
-            return (this.monatspreis * this.tage) / 30;
+            return (this.wochenpreis * this.tage) / 7;
         }
     }
 };

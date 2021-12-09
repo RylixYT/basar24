@@ -16,9 +16,7 @@ export default new Vuex.Store({
         rentables: [],
         deposits: [],
         discounts: [],
-        werb: [],
         rents: [],
-        header: [],
         vertrag: []
     },
     mutations: {

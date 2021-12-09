@@ -1,13 +1,11 @@
 import Home from "../views/Home";
 import Kunde from "../views/Kunde";
-import Header from "../views/Header";
 import Vertrag from "../views/Vertrag";
 import Fahrzeug from "../views/Fahrzeug";
 import Mietfahrzeuge from "../views/Mietfahrzeuge";
 import Kaution from "../views/Kaution";
 import Rabatt from "../views/Rabatt";
 import Verleih from "../views/Verleih";
-import Werbung from "../views/Werbung";
 import Nutzerverwaltung from "../views/Nutzerverwaltung";
 
 export const routes = [
@@ -22,10 +20,6 @@ export const routes = [
     {
         path: "/vertrag",
         component: Vertrag
-    },
-    {
-        path: "/header",
-        component: Header
     },
     {
         path: "/customers",
@@ -46,10 +40,6 @@ export const routes = [
     {
         path: "/discounts",
         component: Rabatt
-    },
-    {
-        path: "/ads",
-        component: Werbung
     },
     {
         path: "/verleih",

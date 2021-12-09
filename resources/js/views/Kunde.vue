@@ -98,7 +98,7 @@
                                             :key="index"
                                         >
                                             <th scope="row">
-                                                OOT-{{ kunde.id }}
+                                                DC-{{ kunde.id }}
                                             </th>
                                             <td>
                                                 <input

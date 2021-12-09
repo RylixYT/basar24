@@ -24,14 +24,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>O.O.T-Kennung</th>
-                                            <th>Typ</th>
+                                            <th>Vertragsnummer</th>
                                             <th>Mietdauer</th>
                                             <th>Rabatt</th>
-                                            <th>Tagespreis</th>
-                                            <th>Wochenpreis</th>
-                                            <th>Monatspreis</th>
-                                            <th>Index</th>
                                             <th>von</th>
                                             <th>bis</th>
                                             <th>Preis</th>
@@ -48,10 +43,9 @@
                                             :key="index"
                                         >
                                             <th scope="row">
-                                                OOT-{{ rent.id }}
+                                                DC-{{ rent.id }}
                                             </th>
                                             <td>{{ rent.name }}</td>
-                                            <td>{{ rent.typ }}</td>
                                             <td>
                                                 {{
                                                     (rent.mietdauer = tage(
@@ -59,23 +53,9 @@
                                                     ))
                                                 }}
                                             </td>
-                                            <td class="d-flex">
-                                                <input
-                                                    type="text"
-                                                    v-model="rent.rabatt"
-                                                    @input="updateData(rent)"
-                                                />%
-                                            </td>
                                             <td>
-                                                {{ format(rent.tagespreis) }}
+                                                {{rent.rabatt}}%
                                             </td>
-                                            <td>
-                                                {{ format(rent.wochenpreis) }}
-                                            </td>
-                                            <td>
-                                                {{ format(rent.monatspreis) }}
-                                            </td>
-                                            <td>{{ rent.berechnungsindex }}</td>
                                             <td>
                                                 <input
                                                     class="w-100"
@@ -92,7 +72,9 @@
                                                     @input="updateData(rent)"
                                                 />
                                             </td>
-                                            <td>{{ format(preis(rent)) }}</td>
+                                            <td>
+                                                {{ format(rent.preis) }}
+                                            </td>
                                             <td>
                                                 {{
                                                     rent.customer
@@ -148,14 +130,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>O.O.T-Kennung</th>
-                                            <th>Typ</th>
+                                            <th>Vertragsnummer</th>
                                             <th>Mietdauer</th>
                                             <th>Rabatt</th>
-                                            <th>Tagespreis</th>
-                                            <th>Wochenpreis</th>
-                                            <th>Monatspreis</th>
-                                            <th>Index</th>
                                             <th>von</th>
                                             <th>bis</th>
                                             <th>Preis</th>
@@ -175,7 +152,6 @@
                                                 OOT-{{ rent.id }}
                                             </th>
                                             <td>{{ rent.name }}</td>
-                                            <td>{{ rent.typ }}</td>
                                             <td>
                                                 {{
                                                     (rent.mietdauer = tage(
@@ -183,23 +159,9 @@
                                                     ))
                                                 }}
                                             </td>
-                                            <td class="d-flex">
-                                                <input
-                                                    type="text"
-                                                    v-model="rent.rabatt"
-                                                    @input="updateData(rent)"
-                                                />%
-                                            </td>
                                             <td>
-                                                {{ format(rent.tagespreis) }}
+                                                {{rent.rabatt}}%
                                             </td>
-                                            <td>
-                                                {{ format(rent.wochenpreis) }}
-                                            </td>
-                                            <td>
-                                                {{ format(rent.monatspreis) }}
-                                            </td>
-                                            <td>{{ rent.berechnungsindex }}</td>
                                             <td>
                                                 <input
                                                     class="w-100"
@@ -216,7 +178,9 @@
                                                     @input="updateData(rent)"
                                                 />
                                             </td>
-                                            <td>{{ format(preis(rent)) }}</td>
+                                            <td>
+                                                {{ format(rent.preis) }}
+                                            </td>
                                             <td>
                                                 {{
                                                     rent.customer
@@ -285,27 +249,6 @@ export default {
         },
         formatDate(dateString) {
             return date.transform(dateString, "YYYY-MM-DD", "DD.MM.YYYY");
-        },
-        preis(rent) {
-            switch (rent.berechnungsindex) {
-                case "TAG":
-                    return (
-                        rent.tagespreis * rent.mietdauer -
-                        rent.tagespreis * rent.mietdauer * (rent.rabatt / 100)
-                    );
-                case "WOCHE":
-                    return (
-                        (rent.wochenpreis * rent.mietdauer) / 7 -
-                        ((rent.wochenpreis * rent.mietdauer) / 7) *
-                            (rent.rabatt / 100)
-                    );
-                case "MONAT":
-                    return (
-                        (rent.monatspreis * rent.mietdauer) / 30 -
-                        ((rent.monatspreis * rent.mietdauer) / 30) *
-                            (rent.rabatt / 100)
-                    );
-            }
         },
         dayDiff(dateString) {
             return date

@@ -37,82 +37,6 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">
-                                            Fahrzeugart
-                                        </label>
-                                        <select
-                                            class="form-control"
-                                            v-model="fahrzeug.art"
-                                        >
-                                            <option value="">
-                                                Art auswählen
-                                            </option>
-                                            <option value="PKW">PKW</option>
-                                            <option value="Motorrad">
-                                                Motorrad
-                                            </option>
-                                            <option value="Transporter">
-                                                Transporter
-                                            </option>
-                                            <option value="Boot">
-                                                Boot
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            Fahrzeugantrieb
-                                        </label>
-                                        <select
-                                            class="form-control"
-                                            v-model="fahrzeug.antrieb"
-                                        >
-                                            <option value=""
-                                                >Antrieb auswählen</option
-                                            >
-                                            <option value="Front">Front</option>
-                                            <option value="Heck">Heck</option>
-                                            <option value="Allrad"
-                                                >Allrad</option
-                                            >
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            Fahrzeugklasse
-                                        </label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            v-model="fahrzeug.klasse"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            Kraftstoff
-                                        </label>
-                                        <select
-                                            class="form-control"
-                                            v-model="fahrzeug.kraftstoff"
-                                        >
-                                            <option value="">
-                                                Kraftstoff auswählen
-                                            </option>
-                                            <option value="Diesel">
-                                                Diesel
-                                            </option>
-                                            <option value="Benzin">
-                                                Benzin
-                                            </option>
-                                            <option value="Strom">
-                                                Strom
-                                            </option>
-                                            <option value="-">
-                                                -
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
                                             PS
                                         </label>
                                         <input
@@ -143,46 +67,24 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">
-                                            Fahrzeugneupreis
+                                            Tagespreis
                                         </label>
                                         <input
                                             type="number"
                                             step="0.01"
                                             class="form-control"
-                                            v-model="fahrzeug.neupreis"
+                                            v-model="fahrzeug.tag"
                                         />
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">
-                                            Max. Km/h
+                                            Wochenpreis
                                         </label>
                                         <input
                                             type="number"
                                             step="0.01"
                                             class="form-control"
-                                            v-model="fahrzeug.max"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            Kraftstoffverbrauch
-                                        </label>
-                                        <input
-                                            type="number"
-                                            step="0.01"
-                                            class="form-control"
-                                            v-model="fahrzeug.verbrauch"
-                                        />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label">
-                                            Beschleunigung
-                                        </label>
-                                        <input
-                                            type="number"
-                                            step="0.01"
-                                            class="form-control"
-                                            v-model="fahrzeug.beschleunigung"
+                                            v-model="fahrzeug.woche"
                                         />
                                     </div>
                                     <div class="form-group">
@@ -213,17 +115,11 @@
                                     <thead>
                                         <tr>
                                             <th>Model</th>
-                                            <th>Antrieb</th>
-                                            <th>Fahrzeugart</th>
-                                            <th>Klasse</th>
-                                            <th>Kraftstoff</th>
                                             <th>PS</th>
                                             <th>Sitze</th>
                                             <th>Kofferraum</th>
-                                            <th>Neupreis</th>
-                                            <th>Max. Km/h</th>
-                                            <th>liter/km</th>
-                                            <th>0-100</th>
+                                            <th>Tagespreis</th>
+                                            <th>Wochenpreis</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -238,77 +134,6 @@
                                                     v-model="car.model"
                                                     @input="updateData(car)"
                                                 />
-                                            </td>
-                                            <td>
-                                                <select
-                                                    class="form-control"
-                                                    v-model="car.antrieb"
-                                                    @change="updateData(car)"
-                                                >
-                                                    <option value=""
-                                                        >Antrieb
-                                                        auswählen</option
-                                                    >
-                                                    <option value="Front"
-                                                        >Front</option
-                                                    >
-                                                    <option value="Heck"
-                                                        >Heck</option
-                                                    >
-                                                    <option value="Allrad"
-                                                        >Allrad</option
-                                                    >
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select
-                                                    class="form-control"
-                                                    v-model="car.art"
-                                                    @change="updateData(car)"
-                                                >
-                                                    <option value="">
-                                                        Art auswählen
-                                                    </option>
-                                                    <option value="PKW"
-                                                        >PKW</option
-                                                    >
-                                                    <option value="Motorrad">
-                                                        Motorrad
-                                                    </option>
-                                                    <option value="Transporter">
-                                                        Transporter
-                                                    </option>
-                                                    <option value="Boot"
-                                                        >Boot</option
-                                                    >
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    v-model="car.klasse"
-                                                    @input="updateData(car)"
-                                                />
-                                            </td>
-                                            <td>
-                                                <select
-                                                    class="form-control"
-                                                    v-model="car.kraftstoff"
-                                                    @change="updateData(car)"
-                                                >
-                                                    <option value="Diesel">
-                                                        Diesel
-                                                    </option>
-                                                    <option value="Benzin">
-                                                        Benzin
-                                                    </option>
-                                                    <option value="Strom">
-                                                        Strom
-                                                    </option>
-                                                    <option value="-">
-                                                        -
-                                                    </option>
-                                                </select>
                                             </td>
                                             <td>
                                                 <input
@@ -334,28 +159,14 @@
                                             <td>
                                                 <input
                                                     type="text"
-                                                    v-model="car.neupreis"
+                                                    v-model="car.tag"
                                                     @input="updateData(car)"
                                                 />
                                             </td>
                                             <td>
                                                 <input
                                                     type="text"
-                                                    v-model="car.max"
-                                                    @input="updateData(car)"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    v-model="car.verbrauch"
-                                                    @input="updateData(car)"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    v-model="car.beschleunigung"
+                                                    v-model="car.woche"
                                                     @input="updateData(car)"
                                                 />
                                             </td>
@@ -386,18 +197,12 @@ export default {
         return {
             fahrzeug: {
                 model: "",
-                art: "",
-                antrieb: "",
-                klasse: "",
-                kraftstoff: "",
                 ps: "",
                 sitze: "",
                 kofferraum: "",
-                max: "",
-                verbrauch: "",
-                beschleunigung: "",
+                tag: "",
+                woche: "",
                 bild: "",
-                neupreis: ""
             }
         };
     },

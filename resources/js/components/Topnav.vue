@@ -10,16 +10,16 @@
                         class="navbar-brand"
                     >
                         <div class="brand-text brand-big text-uppercase">
-                            <strong class="text-primary">Liveinvader</strong>
+                            <strong class="text-primary">WebTower</strong>
                             <strong>Backend x </strong>
                             <strong class="text-primary"
-                                >O.O.T. - Autovermietung</strong
+                                >DreamCars - Autovermietung</strong
                             >
                         </div>
                         <div class="brand-text brand-sm visible">
-                            <strong class="text-primary">LI</strong
+                            <strong class="text-primary">WT</strong
                             ><strong>&nbsp;x&nbsp;</strong>
-                            <strong class="text-primary">OOT</strong>
+                            <strong class="text-primary">DC</strong>
                         </div>
                     </router-link>
                     <!-- Sidebar Toggle Btn-->

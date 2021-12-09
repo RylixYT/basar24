@@ -10,13 +10,6 @@
                     </router-link>
                 </li>
             </router-link>
-            <router-link to="/header" custom v-slot="{ isExactActive }">
-                <li :class="[isExactActive && 'active']">
-                    <router-link to="/header">
-                        <i class="icon-picture"></i>Header
-                    </router-link>
-                </li>
-            </router-link>
             <router-link to="/vertrag" custom v-slot="{ isExactActive }">
                 <li :class="[isExactActive && 'active']">
                     <router-link to="/vertrag">
@@ -86,13 +79,6 @@
                 <li :class="[isExactActive && 'active']">
                     <router-link to="/deposits">
                         <i class="fa fa-money"></i>Kautionen
-                    </router-link>
-                </li>
-            </router-link>
-            <router-link to="/ads" custom v-slot="{ isExactActive }">
-                <li :class="[isExactActive && 'active']">
-                    <router-link to="/ads">
-                        <i class="fa fa-dollar"></i>Werbung
                     </router-link>
                 </li>
             </router-link>

@@ -16,17 +16,11 @@ class CreateVehiclesTable extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->string("model");
-            $table->string("art");
-            $table->string("antrieb");
-            $table->string("klasse");
-            $table->string("kraftstoff");
             $table->integer("ps");
             $table->integer("sitze");
             $table->integer("kofferraum");
-            $table->integer("max");
-            $table->float("neupreis");
-            $table->float("verbrauch");
-            $table->float("beschleunigung");
+            $table->float("tag");
+            $table->float("woche");
             $table->float("rabatt")->default(1);
             $table->timestamps();
         });
