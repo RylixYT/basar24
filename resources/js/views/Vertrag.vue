@@ -55,6 +55,9 @@ export default {
                 data: data,
                 route: "vertrag"
             });
+            this.update({
+                id: d
+            });
         },
         deleteData(id) {
             this.delete({
