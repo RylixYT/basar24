@@ -18,7 +18,7 @@ class RentsController extends Controller
     {
         $rent = Rent::create($request->all());
 
-        return response($rent, 201);
+        return response($rent->id, 201);
     }
 
     public function show($id)

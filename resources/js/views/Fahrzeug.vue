@@ -118,7 +118,7 @@
                                             <th>PS</th>
                                             <th>Sitze</th>
                                             <th>Kofferraum</th>
-                                            <th>Tagespreis</th>
+                                            <th>Stundenpreis</th>
                                             <th>Wochenpreis</th>
                                             <th></th>
                                         </tr>
@@ -202,7 +202,7 @@ export default {
                 kofferraum: "",
                 tag: "",
                 woche: "",
-                bild: "",
+                bild: ""
             }
         };
     },

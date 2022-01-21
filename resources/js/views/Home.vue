@@ -239,7 +239,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th>Tagespreis:</th>
+                                            <th>Stundenpreis:</th>
                                             <td>
                                                 {{
                                                     tagespreis
@@ -480,11 +480,12 @@ export default {
         },
         vermieten() {
             if (this.step == 4 && !this.activeCar.customer) {
+                let id = this.rents.length + 1;
                 // Add Kaution
                 this.insert({
                     data: {
                         typ: "hin", //Hin zu OOT | Zurueck zu kaution
-                        bemerkung: "DC-" + (this.rents.length + 1),
+                        bemerkung: "IC-" + id,
                         vban_empfaenger: 100001,
                         vban_sender: this.activeMieter.vban,
                         wert: this.kaution
@@ -497,7 +498,7 @@ export default {
                     data: {
                         name: this.model,
                         vertrag: this.vertrag,
-                        vertragsnummer: this.rents.length + 1,
+                        vertragsnummer: id,
                         rabatt: this.rabatt,
                         kaution: this.kaution,
                         start: this.start,
@@ -505,14 +506,14 @@ export default {
                         customer_id: this.activeMieter.id,
                         owner_id: this.activeCar.owner.id,
                         mietdauer: this.tage,
-                        preis: this.mietzahlung,
+                        preis: this.mietzahlung
                     },
                     route: "rents"
                 }).then(() => {
                     // Add Driver to Mietfahrzeug
                     this.update({
                         id: this.activeCar.id,
-                        data: { rent_id: this.rents.length + 1 },
+                        data: { rent_id: this.rent_id },
                         route: "rentables"
                     });
                     this.step = 1;
@@ -584,7 +585,8 @@ export default {
             cars: "getRentables",
             rents: "getRents",
             discount: "getDiscounts",
-            vertragVorlage: "getVertrag"
+            vertragVorlage: "getVertrag",
+            rent_id: "getRentId"
         }),
         modelle() {
             return this.cars.map(
@@ -621,15 +623,8 @@ export default {
             }
         },
         mietzahlung() {
-            if (
-                !this.tage ||
-                !this.tagespreis ||
-                !this.wochenpreis
-            )
+            if (!this.tage || !this.tagespreis || !this.wochenpreis)
                 return false;
-            if (this.tage < 7) {
-                return this.tagespreis * this.tage;
-            }
             return (this.wochenpreis * this.tage) / 7;
         }
     }

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import { rest } from "lodash";
 
 Vue.use(Vuex);
 
@@ -38,7 +39,10 @@ export default new Vuex.Store({
             let data = payload.data;
             data._token = csrf;
             data.api_token = api_token;
-            await axios.post(url + payload.route, data);
+            await axios.post(url + payload.route, data).then(res => {
+                res.state = "rent_id";
+                state.commit("set", res);
+            });
         },
         async update(state, payload) {
             let data = payload.data;
@@ -65,6 +69,7 @@ export default new Vuex.Store({
         getAds: state => state.werb,
         getRents: state => state.rents,
         getHeaders: state => state.header,
-        getVertrag: state => state.vertrag
+        getVertrag: state => state.vertrag,
+        getRentId: state => state.rent_id
     }
 });

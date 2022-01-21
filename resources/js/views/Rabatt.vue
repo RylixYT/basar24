@@ -72,7 +72,7 @@
                                             <th>#</th>
                                             <th>Fahrzeug</th>
                                             <th>Rabatt</th>
-                                            <th>Tagespreis</th>
+                                            <th>Stundenpreis</th>
                                             <th>Monatspreis</th>
                                         </tr>
                                     </thead>
@@ -95,20 +95,20 @@
                                             <td>
                                                 {{
                                                     format(
-                                                            car.tag *
+                                                        car.tag *
                                                             discount.tag *
                                                             discount.gesamt *
                                                             car.rabatt
-                                                        )
+                                                    )
                                                 }}
                                             </td>
                                             <td>
                                                 {{
                                                     format(
                                                         car.woche *
-                                                        discount.tag *
-                                                        discount.gesamt *
-                                                        car.rabatt
+                                                            discount.woche *
+                                                            discount.gesamt *
+                                                            car.rabatt
                                                     )
                                                 }}
                                             </td>
