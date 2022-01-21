@@ -12,14 +12,12 @@
                         <div class="brand-text brand-big text-uppercase">
                             <strong class="text-primary">WebTower</strong>
                             <strong>Backend x </strong>
-                            <strong class="text-primary"
-                                >DreamCars - Autovermietung</strong
-                            >
+                            <strong class="text-primary">IceCars</strong>
                         </div>
                         <div class="brand-text brand-sm visible">
                             <strong class="text-primary">WT</strong
                             ><strong>&nbsp;x&nbsp;</strong>
-                            <strong class="text-primary">DC</strong>
+                            <strong class="text-primary">IC</strong>
                         </div>
                     </router-link>
                     <!-- Sidebar Toggle Btn-->
