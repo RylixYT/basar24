@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.9.2",
+        "@tinymce/tinymce-vue": "^3",
         "bootstrap-vue": "^2.21.2",
         "date-and-time": "^1.0.1",
         "laravel-mix-artisan-serve": "^2.0.0",

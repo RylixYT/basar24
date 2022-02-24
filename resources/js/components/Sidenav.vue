@@ -83,6 +83,14 @@
                 </li>
             </router-link>
 
+            <router-link to="/infos" custom v-slot="{ isExactActive }">
+                <li :class="[isExactActive && 'active']">
+                    <router-link to="/infos">
+                        <i class="fa fa-info"></i>Infos
+                    </router-link>
+                </li>
+            </router-link>
+
             <!-- <li>
         <a
           href="#exampledropdownDropdown"

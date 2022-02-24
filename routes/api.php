@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:api'])->group(function () {
-    /* API Endpoint for frontend */
+    /* API endpoint for frontend */
     Route::prefix('data')->group(function () {
+        Route::get('/infos', [RentablesController::class, "index"]);
         Route::get('/rentables', [RentablesController::class, "index"]);
         Route::get('/discounts', [DiscountsController::class, "index"]);
     });
 
-    /* API Endpoint for backend */
+    /* API endpoint for backend */
     Route::middleware(['admin'])->group(function () {
         Route::apiResources(
             [
@@ -24,7 +25,8 @@ Route::middleware(['auth:api'])->group(function () {
                 "/deposits" => DepositsController::class,
                 "/discounts" => DiscountsController::class,
                 "/rents" => RentsController::class,
-                "/vertrag" => VertragsController::class
+                "/vertrag" => VertragsController::class,
+                "/infos" => InfosController::class
             ]
         );
     });

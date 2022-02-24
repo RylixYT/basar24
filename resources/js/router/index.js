@@ -6,6 +6,7 @@ import Mietfahrzeuge from "../views/Mietfahrzeuge";
 import Kaution from "../views/Kaution";
 import Rabatt from "../views/Rabatt";
 import Verleih from "../views/Verleih";
+import Infos from "../views/Infos";
 import Nutzerverwaltung from "../views/Nutzerverwaltung";
 
 export const routes = [
@@ -44,5 +45,9 @@ export const routes = [
     {
         path: "/verleih",
         component: Verleih
+    },
+    {
+        path: "/infos",
+        component: Infos
     }
 ];

@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import { rest } from "lodash";
 
 Vue.use(Vuex);
 
@@ -18,7 +17,8 @@ export default new Vuex.Store({
         deposits: [],
         discounts: [],
         rents: [],
-        vertrag: []
+        vertrag: [],
+        infos: {}
     },
     mutations: {
         set(state, payload) {
@@ -70,6 +70,7 @@ export default new Vuex.Store({
         getRents: state => state.rents,
         getHeaders: state => state.header,
         getVertrag: state => state.vertrag,
-        getRentId: state => state.rent_id
+        getRentId: state => state.rent_id,
+        getInfos: state => state.infos
     }
 });
