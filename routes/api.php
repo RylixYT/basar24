@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:api'])->group(function () {
     /* API endpoint for frontend */
     Route::prefix('data')->group(function () {
-        Route::get('/infos', [RentablesController::class, "index"]);
+        Route::get('/infos', [InfosController::class, "index"]);
         Route::get('/rentables', [RentablesController::class, "index"]);
         Route::get('/discounts', [DiscountsController::class, "index"]);
     });
